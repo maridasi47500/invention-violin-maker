@@ -1,0 +1,12 @@
+<% content_for :title, "Editing restoration" %>
+
+<h1>Editing restoration</h1>
+
+<%= render "form", restoration: @restoration %>
+
+<br>
+
+<div>
+  <%= link_to "Show this restoration", @restoration %> |
+  <%= link_to "Back to restorations", restorations_path %>
+</div>

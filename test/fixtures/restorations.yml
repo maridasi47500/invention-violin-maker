@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  instrument: one
+  description: MyText
+  work_date: 2026-04-25
+
+two:
+  instrument: two
+  description: MyText
+  work_date: 2026-04-25

@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Restorations" %>
+
+<h1>Restorations</h1>
+
+<div id="restorations">
+  <% @restorations.each do |restoration| %>
+    <%= render restoration %>
+    <p>
+      <%= link_to "Show this restoration", restoration %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New restoration", new_restoration_path %>
