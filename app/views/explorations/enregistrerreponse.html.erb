@@ -1,0 +1,37 @@
+<h1>enregistrer ta reponse</h1>
+<p>question: <%=@question.texte%></p>
+
+<%= form_with(model: @exploration) do |form| %>
+  <% if @exploration.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@exploration.errors.count, "error") %> prohibited this @exploration from being saved:</h2>
+
+      <ul>
+        <% @exploration.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :violinist_name, style: "display: block" %>
+    <%= form.text_field :violinist_name %>
+  </div>
+
+  <div>
+    <%= form.hidden_field :fire_point_id%>
+
+  </div>
+
+
+  <div>
+    <%= form.label :audio_reponse_url, style: "display: block" %>
+    <%= form.file_field :audio_reponse_url %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+

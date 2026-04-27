@@ -13,17 +13,17 @@
 
   <div>
     <%= form.label :string_spirit_id, style: "display: block" %>
-    <%= form.text_field :string_spirit_id %>
+    <%= form.collection_select :string_spirit_id, StringSpirit.all, :id, :myname %>
   </div>
 
   <div>
     <%= form.label :coup_archet_id, style: "display: block" %>
-    <%= form.text_field :coup_archet_id %>
+    <%= form.collection_select :coup_archet_id, CoupArchet.all, :id, :nom %>
   </div>
 
   <div>
     <%= form.label :oeuvre_id, style: "display: block" %>
-    <%= form.text_field :oeuvre_id %>
+    <%= form.collection_select :oeuvre_id, Oeuvre.all, :id, :titre %>
   </div>
 
   <div>

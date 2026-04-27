@@ -23,12 +23,12 @@
 
   <div>
     <%= form.label :compositeur_id, style: "display: block" %>
-    <%= form.text_field :compositeur_id %>
+    <%= form.collection_select :compositeur_id,Compositeur.all, :id, :nom %>
   </div>
 
   <div>
     <%= form.label :style_musical_id, style: "display: block" %>
-    <%= form.text_field :style_musical_id %>
+    <%= form.collection_select :style_musical_id,StyleMusical.all, :id, :nom %>
   </div>
 
   <div>

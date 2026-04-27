@@ -1,5 +1,17 @@
 class ExplorationsController < ApplicationController
-  before_action :set_exploration, only: %i[ show edit update destroy ]
+  before_action :set_exploration, only: %i[ show edit update destroy]
+  def enregistrerreponse
+    @question=Question.find(params[:question_id])
+    @exploration=Exploration.new(fire_point_id: @question.fire_point_id)
+  end
+  def mesnotes
+    @question=Question.find(params[:question_id])
+    @exploration=Exploration.new(fire_point_id: @question.fire_point_id)
+  end
+  def ecrirelilypond
+    @question=Question.find(params[:question_id])
+    @exploration=Exploration.new(fire_point_id: @question.fire_point_id)
+  end
 
   # GET /explorations or /explorations.json
   def index

@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Cordes" %>
+
+<h1>Cordes</h1>
+
+<div id="cordes">
+  <% @cordes.each do |corde| %>
+    <%= render corde %>
+    <p>
+      <%= link_to "Show this corde", corde %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New corde", new_corde_path %>

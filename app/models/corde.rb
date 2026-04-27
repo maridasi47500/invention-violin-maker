@@ -1,0 +1,2 @@
+class Corde < ApplicationRecord
+end

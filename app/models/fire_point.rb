@@ -5,4 +5,7 @@ class FirePoint < ApplicationRecord
   has_many :questions
   has_many :explorations
   # Ex: "Le spirit Sol/Brahms/Romantique + Détaché lourd + Symphonie 4"
+def myname
+coup_archet.nom+ " "+oeuvre.titre
+end
 end

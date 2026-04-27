@@ -1,17 +1,10 @@
 <div id="<%= dom_id fire_point %>">
-  <p>
-    <strong>String spirit:</strong>
-    <%= fire_point.string_spirit_id %>
-  </p>
+<p>[Corde: <%=fire_point.string_spirit.corde.nom%> ▼] [Époque: <%=fire_point.string_spirit.epoque.nom%> ▼]</p>
+<p> [Compositeur: <%=fire_point.string_spirit.compositeur.nom%> ▼]   
+</p>
+<p>
+→ “1 FirePoint trouvé : <%=fire_point.coup_archet.nom%> <%=fire_point.oeuvre.titre%>”
+</p>
 
-  <p>
-    <strong>Coup archet:</strong>
-    <%= fire_point.coup_archet_id %>
-  </p>
-
-  <p>
-    <strong>Oeuvre:</strong>
-    <%= fire_point.oeuvre_id %>
-  </p>
 
 </div>

@@ -13,12 +13,12 @@
 
   <div>
     <%= form.label :texte, style: "display: block" %>
-    <%= form.textarea :texte %>
+    <%= form.textarea :texte, placeholder: "Le feu est-il dans le poids ou la lenteur ?" %>
   </div>
 
   <div>
     <%= form.label :fire_point_id, style: "display: block" %>
-    <%= form.text_field :fire_point_id %>
+    <%= form.collection_select :fire_point_id, FirePoint.all, :id, :myname %>
   </div>
 
   <div>

@@ -13,17 +13,17 @@
 
   <div>
     <%= form.label :corde_id, style: "display: block" %>
-    <%= form.text_field :corde_id %>
+    <%= form.collection_select :corde_id, Corde.all, :id, :nom %>
   </div>
 
   <div>
     <%= form.label :epoque_id, style: "display: block" %>
-    <%= form.text_field :epoque_id %>
+    <%= form.collection_select :epoque_id, Epoque.all, :id, :nom %>
   </div>
 
   <div>
     <%= form.label :compositeur_id, style: "display: block" %>
-    <%= form.text_field :compositeur_id %>
+    <%= form.collection_select :compositeur_id, Compositeur.all, :id, :nom %>
   </div>
 
   <div>

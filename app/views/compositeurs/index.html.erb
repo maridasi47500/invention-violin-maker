@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Compositeurs" %>
+
+<h1>Compositeurs</h1>
+
+<div id="compositeurs">
+  <% @compositeurs.each do |compositeur| %>
+    <%= render compositeur %>
+    <p>
+      <%= link_to "Show this compositeur", compositeur %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New compositeur", new_compositeur_path %>

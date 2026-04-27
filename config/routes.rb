@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
+  resources :cordes
+  resources :compositeurs
   resources :oeuvres
-  resources :explorations
-  resources :questions
+  resources :explorations do
+ collection do
+get "enregistrerreponse"
+get "ecrirelilypond"
+get "mesnotes"
+end
+end
+  resources :questions do
+
+end
   resources :fire_points
   resources :string_spirits
   resources :exemple_musicals
