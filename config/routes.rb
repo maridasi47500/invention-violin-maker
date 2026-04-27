@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :oeuvres
   resources :explorations
   resources :questions
   resources :fire_points
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   resources :puce_categories
   resources :caracteres
   resources :style_musicals
+  resources :media
   resources :coup_archets do
     resources :exemple_musicals do
       resources :media

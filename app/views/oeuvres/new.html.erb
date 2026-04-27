@@ -1,0 +1,11 @@
+<% content_for :title, "New oeuvre" %>
+
+<h1>New oeuvre</h1>
+
+<%= render "form", oeuvre: @oeuvre %>
+
+<br>
+
+<div>
+  <%= link_to "Back to oeuvres", oeuvres_path %>
+</div>

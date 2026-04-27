@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_04_27_011732) do
+ActiveRecord::Schema[8.0].define(version: 2026_04_27_144850) do
   create_table "caracteres", force: :cascade do |t|
     t.string "nom"
     t.datetime "created_at", null: false
@@ -86,6 +86,28 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_27_011732) do
     t.index ["oeuvre_id"], name: "index_exemple_musicals_on_oeuvre_id"
   end
 
+  create_table "explorations", force: :cascade do |t|
+    t.string "violinist_name"
+    t.integer "fire_point_id", null: false
+    t.text "notes"
+    t.text "lilypond_reponse"
+    t.string "audio_reponse_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fire_point_id"], name: "index_explorations_on_fire_point_id"
+  end
+
+  create_table "fire_points", force: :cascade do |t|
+    t.integer "string_spirit_id", null: false
+    t.integer "coup_archet_id", null: false
+    t.integer "oeuvre_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coup_archet_id"], name: "index_fire_points_on_coup_archet_id"
+    t.index ["oeuvre_id"], name: "index_fire_points_on_oeuvre_id"
+    t.index ["string_spirit_id"], name: "index_fire_points_on_string_spirit_id"
+  end
+
   create_table "instruments", force: :cascade do |t|
     t.string "brand"
     t.string "model"
@@ -123,6 +145,14 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_27_011732) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.text "texte"
+    t.integer "fire_point_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fire_point_id"], name: "index_questions_on_fire_point_id"
+  end
+
   create_table "restorations", force: :cascade do |t|
     t.integer "instrument_id", null: false
     t.text "description"
@@ -130,6 +160,17 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_27_011732) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["instrument_id"], name: "index_restorations_on_instrument_id"
+  end
+
+  create_table "string_spirits", force: :cascade do |t|
+    t.integer "corde_id", null: false
+    t.integer "epoque_id", null: false
+    t.integer "compositeur_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["compositeur_id"], name: "index_string_spirits_on_compositeur_id"
+    t.index ["corde_id"], name: "index_string_spirits_on_corde_id"
+    t.index ["epoque_id"], name: "index_string_spirits_on_epoque_id"
   end
 
   create_table "style_musicals", force: :cascade do |t|
@@ -155,8 +196,16 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_27_011732) do
   add_foreign_key "coup_archets_tags", "tags"
   add_foreign_key "exemple_musicals", "coup_archets"
   add_foreign_key "exemple_musicals", "oeuvres"
+  add_foreign_key "explorations", "fire_points"
+  add_foreign_key "fire_points", "coup_archets"
+  add_foreign_key "fire_points", "oeuvres"
+  add_foreign_key "fire_points", "string_spirits"
   add_foreign_key "media", "exemple_musicals"
   add_foreign_key "oeuvres", "compositeurs"
   add_foreign_key "oeuvres", "style_musicals"
+  add_foreign_key "questions", "fire_points"
   add_foreign_key "restorations", "instruments"
+  add_foreign_key "string_spirits", "compositeurs"
+  add_foreign_key "string_spirits", "cordes"
+  add_foreign_key "string_spirits", "epoques"
 end
