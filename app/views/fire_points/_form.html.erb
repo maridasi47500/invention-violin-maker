@@ -1,0 +1,32 @@
+<%= form_with(model: fire_point) do |form| %>
+  <% if fire_point.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(fire_point.errors.count, "error") %> prohibited this fire_point from being saved:</h2>
+
+      <ul>
+        <% fire_point.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :string_spirit_id, style: "display: block" %>
+    <%= form.text_field :string_spirit_id %>
+  </div>
+
+  <div>
+    <%= form.label :coup_archet_id, style: "display: block" %>
+    <%= form.text_field :coup_archet_id %>
+  </div>
+
+  <div>
+    <%= form.label :oeuvre_id, style: "display: block" %>
+    <%= form.text_field :oeuvre_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

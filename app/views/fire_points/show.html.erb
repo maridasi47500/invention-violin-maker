@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @fire_point %>
+[Corde: Sol ▼] [Époque: Romantique ▼] [Compositeur: Brahms ▼] 
+→ “1 FirePoint trouvé : Détaché lourd Symph 4”
+
+Question : Le feu est-il dans le poids ou la lenteur ?
+[🎙️ Enregistrer ma réponse] [✍️ Écrire en LilyPond] [📝 Mes notes]
+Explorations d’autres violonistes : 12 réponses ↓
+
+<div>
+  <%= link_to "Edit this fire point", edit_fire_point_path(@fire_point) %> |
+  <%= link_to "Back to fire points", fire_points_path %>
+
+  <%= button_to "Destroy this fire point", @fire_point, method: :delete %>
+</div>

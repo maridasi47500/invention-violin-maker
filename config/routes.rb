@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :explorations
+  resources :questions
+  resources :fire_points
+  resources :string_spirits
   resources :exemple_musicals
   resources :coup_archet_tags
   resources :puce_categories

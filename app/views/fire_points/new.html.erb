@@ -1,0 +1,11 @@
+<% content_for :title, "New fire point" %>
+
+<h1>New fire point</h1>
+
+<%= render "form", fire_point: @fire_point %>
+
+<br>
+
+<div>
+  <%= link_to "Back to fire points", fire_points_path %>
+</div>

@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Fire points" %>
+
+<h1>Fire points</h1>
+
+<div id="fire_points">
+  <% @fire_points.each do |fire_point| %>
+    <%= render fire_point %>
+    <p>
+      <%= link_to "Show this fire point", fire_point %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New fire point", new_fire_point_path %>

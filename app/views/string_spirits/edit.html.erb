@@ -1,0 +1,12 @@
+<% content_for :title, "Editing string spirit" %>
+
+<h1>Editing string spirit</h1>
+
+<%= render "form", string_spirit: @string_spirit %>
+
+<br>
+
+<div>
+  <%= link_to "Show this string spirit", @string_spirit %> |
+  <%= link_to "Back to string spirits", string_spirits_path %>
+</div>

@@ -1,0 +1,12 @@
+<% content_for :title, "Editing exploration" %>
+
+<h1>Editing exploration</h1>
+
+<%= render "form", exploration: @exploration %>
+
+<br>
+
+<div>
+  <%= link_to "Show this exploration", @exploration %> |
+  <%= link_to "Back to explorations", explorations_path %>
+</div>

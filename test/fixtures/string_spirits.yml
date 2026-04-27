@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  corde: one
+  epoque: one
+  compositeur: one
+
+two:
+  corde: two
+  epoque: two
+  compositeur: two

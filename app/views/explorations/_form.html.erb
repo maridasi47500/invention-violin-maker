@@ -1,0 +1,42 @@
+<%= form_with(model: exploration) do |form| %>
+  <% if exploration.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(exploration.errors.count, "error") %> prohibited this exploration from being saved:</h2>
+
+      <ul>
+        <% exploration.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :violinist_name, style: "display: block" %>
+    <%= form.text_field :violinist_name %>
+  </div>
+
+  <div>
+    <%= form.label :fire_point_id, style: "display: block" %>
+    <%= form.text_field :fire_point_id %>
+  </div>
+
+  <div>
+    <%= form.label :notes, style: "display: block" %>
+    <%= form.textarea :notes %>
+  </div>
+
+  <div>
+    <%= form.label :lilypond_reponse, style: "display: block" %>
+    <%= form.textarea :lilypond_reponse %>
+  </div>
+
+  <div>
+    <%= form.label :audio_reponse_url, style: "display: block" %>
+    <%= form.text_field :audio_reponse_url %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

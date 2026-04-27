@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @string_spirit %>
+
+<div>
+  <%= link_to "Edit this string spirit", edit_string_spirit_path(@string_spirit) %> |
+  <%= link_to "Back to string spirits", string_spirits_path %>
+
+  <%= button_to "Destroy this string spirit", @string_spirit, method: :delete %>
+</div>

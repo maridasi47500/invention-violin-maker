@@ -537,3 +537,14 @@ Tag.create!(nom: "Examen DEM")
 
 spiccato.tags << Tag.find_by(nom: "Orchestre")
 spiccato.tags << Tag.find_by(nom: "Examen DEM")
+sol = Corde.find_by(nom: "Sol")
+romantique = Epoque.find_by(nom: "Romantique")
+brahms = Compositeur.create!(nom: "Brahms", epoque: romantique)
+detache_lourd = CoupArchet.find_by(nom: "Détaché lourd")
+symph4 = Oeuvre.create!(titre: "Symphonie 4, 2e mvt", compositeur: brahms)
+
+spirit = StringSpirit.create!(corde: sol, epoque: romantique, compositeur: brahms)
+fp = FirePoint.create!(string_spirit: spirit, coup_archet: detache_lourd, oeuvre: symph4)
+
+Question.create!(fire_point: fp, texte: "Le feu de Brahms est-il dans le poids ou dans la lenteur de l’archet ?")
+Question.create!(fire_point: fp, texte: "Joue-le sul tasto. Le feu s’éteint-il ou change-t-il de couleur ?")
