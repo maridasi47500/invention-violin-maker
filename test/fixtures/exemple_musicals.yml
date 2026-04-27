@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  oeuvre: one
+  coup_archet: one
+  mesure: MyString
+  description: MyString
+
+two:
+  oeuvre: two
+  coup_archet: two
+  mesure: MyString
+  description: MyString

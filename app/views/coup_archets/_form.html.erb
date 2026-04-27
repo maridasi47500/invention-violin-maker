@@ -1,0 +1,97 @@
+<%= form_with(model: coup_archet) do |form| %>
+  <% if coup_archet.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(coup_archet.errors.count, "error") %> prohibited this coup_archet from being saved:</h2>
+
+      <ul>
+        <% coup_archet.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nom, style: "display: block" %>
+    <%= form.text_field :nom %>
+  </div>
+
+  <div>
+    <%= form.label :technique, style: "display: block" %>
+    <%= form.text_field :technique %>
+  </div>
+
+  <div>
+    <%= form.label :rythme_exact, style: "display: block" %>
+    <%= form.text_field :rythme_exact %>
+  </div>
+
+  <div>
+    <%= form.label :vitesse_musicale, style: "display: block" %>
+    <%= form.text_field :vitesse_musicale %>
+  </div>
+
+  <div>
+    <%= form.label :longueur_archet, style: "display: block" %>
+    <%= form.text_field :longueur_archet %>
+  </div>
+
+  <div>
+    <%= form.label :pression, style: "display: block" %>
+    <%= form.text_field :pression %>
+  </div>
+
+  <div>
+    <%= form.label :vitesse_archet, style: "display: block" %>
+    <%= form.text_field :vitesse_archet %>
+  </div>
+
+  <div>
+    <%= form.label :point_contact, style: "display: block" %>
+    <%= form.text_field :point_contact %>
+  </div>
+
+  <div>
+    <%= form.label :angle_archet, style: "display: block" %>
+    <%= form.text_field :angle_archet %>
+  </div>
+
+  <div>
+    <%= form.label :type_attaque, style: "display: block" %>
+    <%= form.text_field :type_attaque %>
+  </div>
+
+  <div>
+    <%= form.label :dynamique_typique, style: "display: block" %>
+    <%= form.text_field :dynamique_typique %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.textarea :description %>
+  </div>
+
+  <div>
+    <%= form.label :epoque_id, style: "display: block" %>
+    <%= form.text_field :epoque_id %>
+  </div>
+
+  <div>
+    <%= form.label :puce_category_id, style: "display: block" %>
+    <%= form.text_field :puce_category_id %>
+  </div>
+
+  <div>
+    <%= form.label :style_musical_id, style: "display: block" %>
+    <%= form.text_field :style_musical_id %>
+  </div>
+
+  <div>
+    <%= form.label :caractere_id, style: "display: block" %>
+    <%= form.text_field :caractere_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

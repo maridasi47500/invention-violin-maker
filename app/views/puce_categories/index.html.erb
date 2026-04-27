@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Puce categories" %>
+
+<h1>Puce categories</h1>
+
+<div id="puce_categories">
+  <% @puce_categories.each do |puce_category| %>
+    <%= render puce_category %>
+    <p>
+      <%= link_to "Show this puce category", puce_category %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New puce category", new_puce_category_path %>

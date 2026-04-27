@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  resources :exemple_musicals
+  resources :coup_archet_tags
+  resources :puce_categories
+  resources :caracteres
+  resources :style_musicals
+  resources :coup_archets do
+    resources :exemple_musicals do
+      resources :media
+    end
+  end
+  resources :epoques
   resources :instruments
   resources :restorations
   get "welcome/index"

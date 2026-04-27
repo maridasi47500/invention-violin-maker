@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Exemple musicals" %>
+
+<h1>Exemple musicals</h1>
+
+<div id="exemple_musicals">
+  <% @exemple_musicals.each do |exemple_musical| %>
+    <%= render exemple_musical %>
+    <p>
+      <%= link_to "Show this exemple musical", exemple_musical %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New exemple musical", new_exemple_musical_path %>

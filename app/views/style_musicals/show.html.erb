@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @style_musical %>
+<%@style=@style_musical%>
+<h1><%= @style.nom %></h1>
+
+<% @style.coup_archets.each do |coup| %>
+  <h2><%= coup.nom %></h2>
+  <% coup.exemple_musicals.each do |ex| %>
+    <p><%= ex.oeuvre.titre %> - <%= ex.mesure %></p>
+    <% ex.media.where(type_media: :video).each do |video| %>
+      <iframe src="<%= video.url %>"></iframe>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div>
+  <%= link_to "Edit this style musical", edit_style_musical_path(@style_musical) %> |
+  <%= link_to "Back to style musicals", style_musicals_path %>
+
+  <%= button_to "Destroy this style musical", @style_musical, method: :delete %>
+</div>

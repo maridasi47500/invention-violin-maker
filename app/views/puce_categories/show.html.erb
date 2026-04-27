@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @puce_category %>
+
+<div>
+  <%= link_to "Edit this puce category", edit_puce_category_path(@puce_category) %> |
+  <%= link_to "Back to puce categories", puce_categories_path %>
+
+  <%= button_to "Destroy this puce category", @puce_category, method: :delete %>
+</div>

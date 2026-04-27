@@ -1,0 +1,27 @@
+<%= form_with(model: coup_archet_tag) do |form| %>
+  <% if coup_archet_tag.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(coup_archet_tag.errors.count, "error") %> prohibited this coup_archet_tag from being saved:</h2>
+
+      <ul>
+        <% coup_archet_tag.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :coup_archet_id, style: "display: block" %>
+    <%= form.text_field :coup_archet_id %>
+  </div>
+
+  <div>
+    <%= form.label :tag_id, style: "display: block" %>
+    <%= form.text_field :tag_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @coup_archet %>
+
+<div>
+  <%= link_to "Edit this coup archet", edit_coup_archet_path(@coup_archet) %> |
+  <%= link_to "Back to coup archets", coup_archets_path %>
+
+  <%= button_to "Destroy this coup archet", @coup_archet, method: :delete %>
+</div>

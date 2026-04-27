@@ -1,0 +1,2 @@
+module CoupArchetsHelper
+end

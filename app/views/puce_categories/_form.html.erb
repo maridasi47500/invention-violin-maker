@@ -1,0 +1,27 @@
+<%= form_with(model: puce_category) do |form| %>
+  <% if puce_category.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(puce_category.errors.count, "error") %> prohibited this puce_category from being saved:</h2>
+
+      <ul>
+        <% puce_category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nom, style: "display: block" %>
+    <%= form.text_field :nom %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.textarea :description %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

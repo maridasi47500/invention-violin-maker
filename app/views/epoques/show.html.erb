@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @epoque %>
+
+<div>
+  <%= link_to "Edit this epoque", edit_epoque_path(@epoque) %> |
+  <%= link_to "Back to epoques", epoques_path %>
+
+  <%= button_to "Destroy this epoque", @epoque, method: :delete %>
+</div>

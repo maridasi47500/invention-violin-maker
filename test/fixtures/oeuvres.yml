@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titre: MyString
+  compositeur: one
+  annee: 1
+  style_musical: one
+
+two:
+  titre: MyString
+  compositeur: two
+  annee: 1
+  style_musical: two

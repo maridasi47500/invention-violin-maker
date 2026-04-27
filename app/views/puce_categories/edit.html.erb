@@ -1,0 +1,12 @@
+<% content_for :title, "Editing puce category" %>
+
+<h1>Editing puce category</h1>
+
+<%= render "form", puce_category: @puce_category %>
+
+<br>
+
+<div>
+  <%= link_to "Show this puce category", @puce_category %> |
+  <%= link_to "Back to puce categories", puce_categories_path %>
+</div>
