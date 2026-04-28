@@ -5,7 +5,16 @@ Question : <%=@question.texte%>
 <%=link_to "[🎙️  Enregistrer ma réponse] ", enregistrerreponse_explorations_path(question_id: @question.id)%>
 <%=link_to "[✍️  Écrire en LilyPond] ", ecrirelilypond_explorations_path(question_id: @question.id)%>
 <%=link_to "[📝 Mes notes]", mesnotes_explorations_path(question_id: @question.id)%>
-Explorations d’autres violonistes : 12 réponses ↓
+Explorations d’autres violonistes : <%=@question.fire_point.explorations.count%> <%="réponse".pluralize(@question.fire_point.explorations.count)%> ↓
+<%@question.fire_point.explorations.each_with_index do |x,i|%>
+<li>
+<b>
+<%=i+1%>
+</b>
+<%=x.violinist_name%> - 
+<%=x.notes%> - 
+</li>
+<%end%>
 
 
 <div>

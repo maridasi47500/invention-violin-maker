@@ -3,7 +3,13 @@ class MediaController < ApplicationController
 
   # GET /media or /media.json
   def index
-    @media = Media.all
+    @media = Media.all.where(exemple_musical_id: params[:exemple_musical_id])
+    @coup_archet = CoupArchet.find(params[:coup_archet_id])
+    @autremedia = Media.includes(:exemple_musical).all.where.not(exemple_musical_id: params[:exemple_musical_id]).where(exemple_musical: {coup_archet: @coup_archet})
+  rescue
+    @media = Media.all.first(1)
+    @autremedia = []
+    @coup_archet = CoupArchet.first
   end
 
   # GET /media/1 or /media/1.json

@@ -1,0 +1,42 @@
+<div id="<%= dom_id experience %>">
+  <p>
+    <strong>Journal labo:</strong>
+    <%= experience.journal_labo.myname %>
+  </p>
+
+  <p>
+    <strong>Corde:</strong>
+    <%= experience.corde.nom %>
+  </p>
+
+  <p>
+    <strong>Point archet:</strong>
+    <%= experience.point_archet %>
+  </p>
+
+  <p>
+    <strong>Longueur:</strong>
+    <%= experience.longueur %>
+  </p>
+
+  <p>
+    <strong>Pression:</strong>
+    <%= experience.pression %>
+  </p>
+
+
+  <p>
+
+    <strong>Ressenti:</strong>
+    <%= experience.ressenti %>
+<%if experience.ressenti >= 8%>
+<b>[Point de Feu détecté]</b>
+<%end%>
+  </p>
+
+  <p>
+    <strong>Note:</strong>
+    <%= experience.note %>
+  </p>
+
+</div>

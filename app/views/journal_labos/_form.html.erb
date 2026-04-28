@@ -1,0 +1,32 @@
+<%= form_with(model: journal_labo) do |form| %>
+  <% if journal_labo.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(journal_labo.errors.count, "error") %> prohibited this journal_labo from being saved:</h2>
+
+      <ul>
+        <% journal_labo.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div>
+    <%= form.label :oeuvre_id, style: "display: block" %>
+    <%= form.collection_select :oeuvre_id, Oeuvre.all, :id, :myname %>
+  </div>
+
+  <div>
+    <%= form.label :mesure, style: "display: block" %>
+    <%= form.text_field :mesure %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

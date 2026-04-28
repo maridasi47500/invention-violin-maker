@@ -548,3 +548,13 @@ fp = FirePoint.create!(string_spirit: spirit, coup_archet: detache_lourd, oeuvre
 
 Question.create!(fire_point: fp, texte: "Le feu de Brahms est-il dans le poids ou dans la lenteur de l’archet ?")
 Question.create!(fire_point: fp, texte: "Joue-le sul tasto. Le feu s’éteint-il ou change-t-il de couleur ?")
+labo = JournalLabo.create!(date: Date.today, oeuvre: partita3, mesure: "m.1-2")
+
+Experience.create!(journal_labo: labo, corde: mi, point_archet: "Milieu", 
+  longueur: "1/4", pression: "Légère", ressenti: 9, 
+  note: "Résonance Mi à vide + rebond naturel = frissons. Sur La ça meurt.")
+
+Experience.create!(journal_labo: labo, corde: mi, point_archet: "Talon", 
+  longueur: "1/2", pression: "Forte", ressenti: 2, 
+  note: "Écrasé, baroque mort. Anti-feu.")
+

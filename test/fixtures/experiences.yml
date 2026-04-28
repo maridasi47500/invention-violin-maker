@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  journal_labo: one
+  corde: one
+  point_archet: MyString
+  longueur: MyString
+  pression: MyString
+  ressenti: 1
+  note: MyText
+
+two:
+  journal_labo: two
+  corde: two
+  point_archet: MyString
+  longueur: MyString
+  pression: MyString
+  ressenti: 1
+  note: MyText

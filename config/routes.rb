@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :experiences
+  resources :journal_labos
   resources :cordes
   resources :compositeurs
   resources :oeuvres

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @journal_labo %>
+
+<div>
+  <%= link_to "Edit this journal labo", edit_journal_labo_path(@journal_labo) %> |
+  <%= link_to "Back to journal labos", journal_labos_path %>
+
+  <%= button_to "Destroy this journal labo", @journal_labo, method: :delete %>
+</div>

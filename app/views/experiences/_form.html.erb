@@ -1,0 +1,52 @@
+<%= form_with(model: experience) do |form| %>
+  <% if experience.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(experience.errors.count, "error") %> prohibited this experience from being saved:</h2>
+
+      <ul>
+        <% experience.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :journal_labo_id, style: "display: block" %>
+    <%= form.collection_select :journal_labo_id, JournalLabo.all, :id, :myname %>
+  </div>
+
+  <div>
+    <%= form.label :corde_id, style: "display: block" %>
+    <%= form.collection_select :corde_id, Corde.all, :id, :nom %>
+  </div>
+
+  <div>
+    <%= form.label :point_archet, style: "display: block" %>
+    <%= form.text_field :point_archet %>
+  </div>
+
+  <div>
+    <%= form.label :longueur, style: "display: block" %>
+    <%= form.text_field :longueur %>
+  </div>
+
+  <div>
+    <%= form.label :pression, style: "display: block" %>
+    <%= form.text_field :pression %>
+  </div>
+
+  <div>
+    <%= form.label :ressenti, style: "display: block" %>
+    <%= form.number_field :ressenti %>
+  </div>
+
+  <div>
+    <%= form.label :note, style: "display: block" %>
+    <%= form.textarea :note %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

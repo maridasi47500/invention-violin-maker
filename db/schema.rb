@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_04_27_210002) do
+ActiveRecord::Schema[8.0].define(version: 2026_04_27_231026) do
   create_table "caracteres", force: :cascade do |t|
     t.string "nom"
     t.datetime "created_at", null: false
@@ -92,6 +92,20 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_27_210002) do
     t.index ["oeuvre_id"], name: "index_exemple_musicals_on_oeuvre_id"
   end
 
+  create_table "experiences", force: :cascade do |t|
+    t.integer "journal_labo_id", null: false
+    t.integer "corde_id", null: false
+    t.string "point_archet"
+    t.string "longueur"
+    t.string "pression"
+    t.integer "ressenti"
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["corde_id"], name: "index_experiences_on_corde_id"
+    t.index ["journal_labo_id"], name: "index_experiences_on_journal_labo_id"
+  end
+
   create_table "explorations", force: :cascade do |t|
     t.string "violinist_name"
     t.integer "fire_point_id", null: false
@@ -122,6 +136,15 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_27_210002) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "journal_labos", force: :cascade do |t|
+    t.date "date"
+    t.integer "oeuvre_id", null: false
+    t.string "mesure"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["oeuvre_id"], name: "index_journal_labos_on_oeuvre_id"
   end
 
   create_table "media", force: :cascade do |t|
@@ -202,10 +225,13 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_27_210002) do
   add_foreign_key "coup_archets_tags", "tags"
   add_foreign_key "exemple_musicals", "coup_archets"
   add_foreign_key "exemple_musicals", "oeuvres"
+  add_foreign_key "experiences", "cordes"
+  add_foreign_key "experiences", "journal_labos"
   add_foreign_key "explorations", "fire_points"
   add_foreign_key "fire_points", "coup_archets"
   add_foreign_key "fire_points", "oeuvres"
   add_foreign_key "fire_points", "string_spirits"
+  add_foreign_key "journal_labos", "oeuvres"
   add_foreign_key "media", "exemple_musicals"
   add_foreign_key "oeuvres", "compositeurs"
   add_foreign_key "oeuvres", "style_musicals"
