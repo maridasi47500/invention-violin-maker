@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :coup_archet_epoques
   resources :tradition_deviations
   resources :fire_evidences
   resources :fire_soul_narratives

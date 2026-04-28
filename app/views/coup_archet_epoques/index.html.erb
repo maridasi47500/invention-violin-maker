@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Coup archet epoques" %>
+
+<h1>Coup archet epoques</h1>
+
+<div id="coup_archet_epoques">
+  <% @coup_archet_epoques.each do |coup_archet_epoque| %>
+    <%= render coup_archet_epoque %>
+    <p>
+      <%= link_to "Show this coup archet epoque", coup_archet_epoque %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New coup archet epoque", new_coup_archet_epoque_path %>

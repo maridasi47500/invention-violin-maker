@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_04_28_015035) do
+ActiveRecord::Schema[8.0].define(version: 2026_04_28_023619) do
   create_table "caracteres", force: :cascade do |t|
     t.string "nom"
     t.datetime "created_at", null: false
@@ -30,6 +30,22 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_28_015035) do
     t.string "nom"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "coup_archet_epoques", force: :cascade do |t|
+    t.integer "coup_archet_id", null: false
+    t.integer "epoque_id", null: false
+    t.text "description_epoque"
+    t.text "caracteristiques_typiques"
+    t.text "evolution_depuis_precedent"
+    t.text "raison_mutation"
+    t.text "exemples_references"
+    t.string "ordre_chronologique_id"
+    t.boolean "is_primary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coup_archet_id"], name: "index_coup_archet_epoques_on_coup_archet_id"
+    t.index ["epoque_id"], name: "index_coup_archet_epoques_on_epoque_id"
   end
 
   create_table "coup_archet_tags", force: :cascade do |t|
@@ -251,6 +267,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_28_015035) do
   end
 
   add_foreign_key "compositeurs", "epoques"
+  add_foreign_key "coup_archet_epoques", "coup_archets"
+  add_foreign_key "coup_archet_epoques", "epoques"
   add_foreign_key "coup_archet_tags", "coup_archets"
   add_foreign_key "coup_archet_tags", "tags"
   add_foreign_key "coup_archets", "caracteres"

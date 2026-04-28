@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  coup_archet: one
+  epoque: one
+  description_epoque: MyText
+  caracteristiques_typiques: MyText
+  evolution_depuis_precedent: MyText
+  raison_mutation: MyText
+  exemples_references: MyText
+  ordre_chronologique_id: MyString
+  is_primary: false
+
+two:
+  coup_archet: two
+  epoque: two
+  description_epoque: MyText
+  caracteristiques_typiques: MyText
+  evolution_depuis_precedent: MyText
+  raison_mutation: MyText
+  exemples_references: MyText
+  ordre_chronologique_id: MyString
+  is_primary: false

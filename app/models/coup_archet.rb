@@ -12,4 +12,10 @@ class CoupArchet < ApplicationRecord
   scope :par_vitesse, ->(v) { where("vitesse_musicale LIKE ?", "%#{v}%") }
   scope :par_longueur, ->(l) { where(longueur_archet: l) }
   scope :par_pression, ->(p) { where(pression: p) }
+  has_many :coup_archet_epoques, dependent: :destroy
+  has_many :epoques, through: :coup_archet_epoques
+  
+  def evolution_narrative
+    coup_archet_epoques.chronologique
+  end
 end
