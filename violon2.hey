@@ -1,0 +1,272 @@
+class CreateLutherie < ActiveRecord::Migration[6.1]
+  def change
+    create_table :lutheries do |t|
+      t.string :nom
+      t.string :luthier_name
+      t.references :epoque, foreign_key: true
+      t.string :type_lutherie, null: false # violin or archet
+      t.integer :annee_creation
+      t.string :region
+      t.text :materials
+      t.text :caracteristiques_sonores
+      t.text :notes
+
+      t.timestamps
+    end
+  end
+end
+class CreateContexteHistoriques < ActiveRecord::Migration[6.0]
+  def change
+    create_table :contexte_historiques do |t|
+      t.integer :annee
+      t.references :epoque, foreign_key: true
+      t.string :evenement
+      t.string :type_contexte, default: 'commercialization'
+      t.text :description
+      t.text :impact_lutherie
+      
+      t.timestamps
+    end
+  end
+end
+class Lutherie < ApplicationRecord
+  belongs_to :epoque
+  has_many :enregistrements_musicaux
+  has_many :oeuvres, through: :enregistrements_musicaux
+  
+  enum type_lutherie: { violon: 0, archet: 1, les_deux: 2 }
+  
+  validates :nom, presence: true
+  validates :epoque_id, presence: true
+  
+  scope :par_epoque, ->(epoque_id) { where(epoque_id: epoque_id) }
+  scope :violons, -> { where(type_lutherie: :violon) }
+  scope :archets, -> { where(type_lutherie: :archet) }
+  
+  def luthier_display
+    "#{nom} (#{luthier_name}, #{region}, #{annee_creation})"
+  end
+end
+class EnregistrementMusical < ApplicationRecord
+  belongs_to :oeuvre
+  belongs_to :epoque
+  belongs_to :lutherie, optional: true
+  
+  enum format_media: { vinyl: 0, cassette: 1, cd: 2, streaming: 3, autre: 4 }
+  enum source: { achete: 0, diffusion_radio: 1, diffusion_tv: 2, collection_personnelle: 3 }
+  
+  validates :titre, presence: true
+  validates :violoniste, presence: true
+  
+  scope :par_violoniste, ->(name) { where(violoniste: name) }
+  scope :par_epoque, ->(epoque_id) { where(epoque_id: epoque_id) }
+  scope :avec_lutherie, -> { where.not(lutherie_id: nil) }
+  
+  def display_info
+    "#{titre} - #{violoniste} (#{annee_enregistrement}, #{format_media})"
+  end
+end
+class ContexteHistorique < ApplicationRecord
+  belongs_to :epoque
+  
+  enum type_contexte: { commercialization: 0, media: 1, voyage_concerts: 2, technologie: 3 }
+  
+  validates :annee, presence: true
+  validates :epoque_id, presence: true
+  validates :type_contexte, presence: true
+  
+  scope :par_type, ->(type) { where(type_contexte: type) }
+  scope :par_epoque, ->(epoque_id) { where(epoque_id: epoque_id) }
+  scope :chronologique, -> { order(:annee) }
+end
+class Epoque < ApplicationRecord
+  # Existing code...
+  has_many :lutheries
+  has_many :enregistrements_musicaux
+  has_many :contextes_historiques
+
+  def lutheries_chronologiques
+    lutheries.order(:annee_creation)
+  end
+
+  def contexte_timeline
+    contextes_historiques.chronologique
+  end
+end
+  has_many :enregistrements_musicaux
+  has_many :lutheries, through: :enregistrements_musicaux
+  
+  def enregistrements_par_lutherie
+    enregistrements_musicaux.includes(:lutherie).group_by(&:lutherie)
+  end
+
+# Lutheries Data
+
+This file contains comprehensive lutherie data covering various epochs in violin making.
+
+## Baroque Era
+- **Stradivarius**: Known for their exceptional quality and tone. Makers include Antonio Stradivari.
+- **Guarneri**: Famous for both craftsmanship and sound quality. Notable makers include Giuseppe Guarneri.
+- **Tourte Early**: Early designs by François Tourte that laid the foundation for modern bows.
+
+## Classical Era
+- **Improved Tourte**: Significant advancements in bow design and materials by François Tourte, contributing to better playability and sound.
+
+## Romantic Era
+- **Heavy Bows**: Introduction of heavier bows which increased the projection and richness of the sound.
+
+## Modern Era
+- Focus on both traditional craftsmanship and innovations in materials and design, leading to a diverse range of styles and functionalities.
+
+## Conclusion
+This overview illustrates the evolution of lutherie and its impact on music performance across different eras.
+# Seed data for musical recordings
+
+recordings = [
+  {
+    name: 'Bach',
+    artist: 'Heifetz',
+    lutherie_id: 1,
+    format_media: 'CD',
+    source: 'Label A',
+    annee_enregistrement: 1930
+  },
+  {
+    name: 'Bach',
+    artist: 'Milstein',
+    lutherie_id: 1,
+    format_media: 'Vinyl',
+    source: 'Label B',
+    annee_enregistrement: 1940
+  },
+  {
+    name: 'Bach',
+    artist: 'Szeryng',
+    lutherie_id: 1,
+    format_media: 'Digital',
+    source: 'Label C',
+    annee_enregistrement: 1950
+  },
+  {
+    name: 'Mozart',
+    artist: 'Heifetz',
+    lutherie_id: 2,
+    format_media: 'CD',
+    source: 'Label A',
+    annee_enregistrement: 1932
+  },
+  {
+    name: 'Mozart',
+    artist: 'Milstein',
+    lutherie_id: 2,
+    format_media: 'Vinyl',
+    source: 'Label B',
+    annee_enregistrement: 1945
+  },
+  {
+    name: 'Mozart',
+    artist: 'Szeryng',
+    lutherie_id: 2,
+    format_media: 'Digital',
+    source: 'Label C',
+    annee_enregistrement: 1955
+  },
+  {
+    name: 'Beethoven',
+    artist: 'Heifetz',
+    lutherie_id: 3,
+    format_media: 'CD',
+    source: 'Label A',
+    annee_enregistrement: 1935
+  },
+  {
+    name: 'Beethoven',
+    artist: 'Milstein',
+    lutherie_id: 3,
+    format_media: 'Vinyl',
+    source: 'Label B',
+    annee_enregistrement: 1948
+  },
+  {
+    name: 'Beethoven',
+    artist: 'Szeryng',
+    lutherie_id: 3,
+    format_media: 'Digital',
+    source: 'Label C',
+    annee_enregistrement: 1958
+  },
+  {
+    name: 'Brahms',
+    artist: 'Heifetz',
+    lutherie_id: 4,
+    format_media: 'CD',
+    source: 'Label A',
+    annee_enregistrement: 1938
+  },
+  {
+    name: 'Brahms',
+    artist: 'Milstein',
+    lutherie_id: 4,
+    format_media: 'Vinyl',
+    source: 'Label B',
+    annee_enregistrement: 1942
+  },
+  {
+    name: 'Brahms',
+    artist: 'Szeryng',
+    lutherie_id: 4,
+    format_media: 'Digital',
+    source: 'Label C',
+    annee_enregistrement: 1955
+  }
+]
+
+# Inserting records into the database
+Record.create!(recordings)
+# Contextes Historiques
+
+# Historical Events related to the invention and use of the violin
+historical_events = [
+  { year: 1700, event: 'Court music' },
+  { year: 1750, event: 'Public concerts begin' },
+  { year: 1850, event: 'Mass production' },
+  { year: 1920, event: 'Recording industry' },
+  { year: 1950, event: 'Vinyl sales' },
+  { year: 1970, event: 'Television' },
+  { year: 2000, event: 'Streaming' }
+]
+class CreateLutheries < ActiveRecord::Migration[6.0]
+  def change
+    create_table :lutheries do |t|
+      t.string :nom, null: false
+      t.string :luthier_name
+      t.references :epoque, null: false, foreign_key: true
+      t.integer :type_lutherie, default: 0
+      t.integer :annee_creation
+      t.string :region
+      t.text :materials
+      t.text :caracteristiques_sonores
+      t.text :notes
+      t.timestamps
+    end
+    add_index :lutheries, [:nom, :epoque_id], unique: true
+  end
+end
+class CreateEnregistrementsMusicaux < ActiveRecord::Migration[6.0]
+  def change
+    create_table :enregistrements_musicaux do |t|
+      t.string :titre, null: false
+      t.references :oeuvre, null: false, foreign_key: true
+      t.string :violoniste, null: false
+      t.string :label_disque
+      t.integer :annee_enregistrement
+      t.integer :format_media, default: 0
+      t.integer :source, default: 0
+      t.references :lutherie, foreign_key: true
+      t.references :epoque, null: false, foreign_key: true
+      t.text :notes
+      t.timestamps
+    end
+    add_index :enregistrements_musicaux, [:titre, :violoniste]
+  end
+end

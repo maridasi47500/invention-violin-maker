@@ -1,0 +1,219 @@
+# app/models/lutherie.rb
+class Lutherie < ApplicationRecord
+  has_many :violon_achats
+  has_many :enregistrement_musicaux, foreign_key: :lutherie_violon_id
+  has_many :enregistrement_musicaux, foreign_key: :lutherie_archet_id
+  belongs_to :epoque_dominante, class_name: 'Epoque', optional: true
+  
+  validates :nom, :ville, :pays, presence: true
+  
+  enum type_lutherie: { violon: 0, archet: 1, both: 2 }
+  
+  # "Violons Crémone" = souvenir d'Italie
+  scope :touristique, -> { where(produit_touristique: true) }
+  scope :par_ville, ->(ville) { where(ville: ville) }
+  scope :par_epoque, ->(epoque) { where(epoque_dominante_id: epoque.id) }
+end
+
+# app/models/violon_achat.rb
+class ViolonAchat < ApplicationRecord
+  belongs_to :lutherie
+  has_many :souvenirs, dependent: :destroy
+  has_many :enregistrement_musicaux, through: :souvenirs
+  has_many :session_jeus, dependent: :destroy
+  
+  validates :date_achat, :prix_paye_eur, presence: true
+  
+  # "Mon souvenir de Crémone"
+  def description_souvenir
+    "#{lutherie.nom} acheté à #{lieu_achat_ville} le #{date_achat.strftime('%d/%m/%Y')}"
+  end
+end
+
+# app/models/enregistrement_musical.rb
+class EnregistrementMusical < ApplicationRecord
+  belongs_to :oeuvre
+  belongs_to :violoniste, class_name: 'Compositeur'
+  belongs_to :lutherie_violon, class_name: 'Lutherie', optional: true
+  belongs_to :lutherie_archet, class_name: 'Lutherie', optional: true
+  belongs_to :epoque_compositeur, class_name: 'Epoque'
+  belongs_to :epoque_enregistrement, class_name: 'Epoque', optional: true
+  has_many :souvenirs, dependent: :destroy
+  
+  # "Heifetz joue Bach avec un Strad et un archet Tourte"
+  def lutherie_complete
+    "#{lutherie_violon&.nom || 'Inconnu'} + #{lutherie_archet&.nom || 'Inconnu'}"
+  end
+end
+
+# app/models/session_jeu.rb
+class SessionJeu < ApplicationRecord
+  belongs_to :violon_achat
+  has_many :souvenirs
+  
+  # "Aujourd'hui j'ai joué Bach sur mon Cremonese"
+end
+
+# app/models/souvenir.rb
+class Souvenir < ApplicationRecord
+  belongs_to :violon_achat
+  belongs_to :enregistrement_musical
+  belongs_to :session_jeu, optional: true
+  
+  # Le VRAI lien : tu achètes un violon → tu écoutes de la musique sur ce violon
+  # → tu joues cette musique → c'est UN SOUVENIR
+end
+# db/migrate/[timestamp]_create_lutheries.rb
+class CreateLutheries < ActiveRecord::Migration[7.0]
+  def change
+    create_table :lutheries do |t|
+      # Identification
+      t.string :nom, null: false                    # "Cremonese", "Parisian Archet", "Mittenwald"
+      t.string :ville, null: false                  # "Cremona", "Paris", "Mittenwald"
+      t.string :region                              # "Lombardy", "Île-de-France"
+      t.string :pays, null: false                   # "Italy", "France", "Germany"
+      
+      # Type de lutherie
+      t.integer :type_lutherie                      # enum: violon, archet, both
+      
+      # Caractéristiques
+      t.text :description_typique                   # "Warm, dark sonority, golden sheen"
+      t.text :materiel_caracteristique              # "Spruce from Val di Fiemme, maple from Balkan"
+      
+      # Historique
+      t.integer :periode_fondation_debut            # 1650
+      t.integer :periode_fondation_fin              # 1850
+      t.integer :epoque_dominante_id                # FK Epoque (Baroque, Classique, etc.)
+      
+      # Commercialisation
+      t.boolean :disponible_achat_neuf, default: true
+      t.boolean :disponible_occasion, default: true
+      t.integer :prix_approximatif_eur              # 2026 pricing
+      t.string :plateforme_achat                    # "EBAY", "Luthier direct", "Auction"
+      
+      # Statut culturel/touristique
+      t.boolean :produit_touristique, default: true # "T-shirt violin"
+      t.text :heritage_culturel                     # "UNESCO Living Heritage", "Master Craftsmen"
+      
+      t.timestamps
+    end
+    
+    add_index :lutheries, [:ville, :pays], unique: true
+    add_foreign_key :lutheries, :epoques, column: :epoque_dominante_id
+  end
+end
+
+# db/migrate/[timestamp]_create_violon_achats.rb
+class CreateViolonAchats < ActiveRecord::Migration[7.0]
+  def change
+    create_table :violon_achats do |t|
+      t.references :utilisateur, polymorphic: true, null: false  # User qui achète
+      t.references :lutherie, null: false, foreign_key: true
+      
+      # Achat = souvenir
+      t.string :nom_personnel                       # "Mon Cremonese de 2026"
+      t.date :date_achat
+      t.string :lieu_achat_ville                    # Où tu l'as acheté (peut être différent de lutherie.ville)
+      t.integer :prix_paye_eur
+      t.string :vendeur
+      
+      # Caractéristiques spécifiques
+      t.text :notes_personnelles                    # "Timbre magnifique, acheté en voyage"
+      t.string :numero_serie                        # Si applicable
+      t.integer :annee_fabrication                  # Quand le violon a été fait
+      
+      # État de la collection
+      t.boolean :actif_collection, default: true
+      t.date :date_vente_ulterieure                 # Si revendu après
+      
+      t.timestamps
+    end
+    
+    add_foreign_key :violon_achats, :lutheries
+  end
+end
+
+# db/migrate/[timestamp]_create_enregistrement_musicaux.rb
+class CreateEnregistrementMusicals < ActiveRecord::Migration[7.0]
+  def change
+    create_table :enregistrement_musicaux do |t|
+      t.references :oeuvre, null: false, foreign_key: true
+      t.references :violoniste, null: false         # Violinist performer
+      
+      # Enregistrement = achat/collection
+      t.date :date_enregistrement                   # Quand c'est gravé
+      t.string :format_media                        # "vinyl", "CD", "streaming", "radio"
+      t.string :label_editeur                       # "Deutsche Grammophon", "Naxos"
+      t.string :url_streaming                       # Spotify, YouTube link
+      
+      # Lutherie utilisée par le violoniste
+      t.references :lutherie_violon, foreign_key: { to_table: :lutheries }, optional: true
+      t.references :lutherie_archet, foreign_key: { to_table: :lutheries }, optional: true
+      t.text :notes_lutherie                        # "Used Strad 1715, Tourte archet"
+      
+      # Source/possession
+      t.string :source_achat                        # "eBay", "Discogs", "Spotify", "Héritage familial"
+      t.date :date_achat_ou_decouverte
+      
+      # Contexte
+      t.integer :epoque_compositeur_id              # L'époque du compositeur
+      t.integer :epoque_enregistrement_id           # L'époque où c'a été gravé (peut être différent!)
+      
+      t.timestamps
+    end
+    
+    add_foreign_key :enregistrement_musicaux, :oeuvres
+    add_foreign_key :enregistrement_musicaux, :compositeurs, column: :violoniste_id
+    add_foreign_key :enregistrement_musicaux, :epoques, column: :epoque_compositeur_id
+    add_foreign_key :enregistrement_musicaux, :epoques, column: :epoque_enregistrement_id
+  end
+end
+
+# db/migrate/[timestamp]_create_session_jeus.rb
+class CreateSessionJeus < ActiveRecord::Migration[7.0]
+  def change
+    create_table :session_jeus do |t|
+      # C'est TOI qui joues
+      t.references :utilisateur, polymorphic: true, null: false
+      t.references :violon_achat, null: false, foreign_key: true
+      t.date :date_session
+      t.time :heure_debut
+      t.integer :duree_minutes
+      
+      # Musique que tu joues
+      t.text :pieces_jouees                         # "Bach Partita 3 m.1-50, Mozart Symph 40 1st mvt"
+      t.text :notes_session                         # "Practicing spiccato, violin resonates well"
+      
+      # Contexte émotionnel/mémoriel
+      t.integer :ressenti_epoque                    # 1-10 : how much did you "feel" the epoch?
+      t.text :reflexion_personnelle                 # "Playing on Cremonese made me feel Baroque soul"
+      
+      t.timestamps
+    end
+  end
+end
+
+# db/migrate/[timestamp]_create_souvenirs.rb
+# LIEN : Violon acheté ↔ Musique écoutée ↔ Session de jeu
+class CreateSouvenirs < ActiveRecord::Migration[7.0]
+  def change
+    create_table :souvenirs do |t|
+      t.references :violon_achat, null: false, foreign_key: true
+      t.references :enregistrement_musical, null: false, foreign_key: true
+      t.references :session_jeu, optional: true, foreign_key: true
+      
+      # Expérience
+      t.date :date_ecoute                           # Quand tu l'as écouté
+      t.text :contexte                              # "Écouté à Cremona après l'achat du violon"
+      t.text :reflexion                             # "C'est avec CE violon que je veux jouer ça"
+      
+      # Le "souvenir" est-il vivant ?
+      t.boolean :relie_à_jeu_personnel, default: false  # As-tu joué cette pièce?
+      t.integer :resonance_emotionnelle             # 1-10 : how connected?
+      
+      t.timestamps
+    end
+    
+    add_index :souvenirs, [:violon_achat_id, :enregistrement_musical_id], unique: true
+  end
+end
