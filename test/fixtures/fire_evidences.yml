@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fire_point: one
+  evidence_type: MyString
+  source: MyText
+  content: MyText
+  source_url: MyString
+  confidence: 1
+
+two:
+  fire_point: two
+  evidence_type: MyString
+  source: MyText
+  content: MyText
+  source_url: MyString
+  confidence: 1

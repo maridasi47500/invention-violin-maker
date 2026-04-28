@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_04_27_231026) do
+ActiveRecord::Schema[8.0].define(version: 2026_04_28_015035) do
   create_table "caracteres", force: :cascade do |t|
     t.string "nom"
     t.datetime "created_at", null: false
@@ -117,6 +117,18 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_27_231026) do
     t.index ["fire_point_id"], name: "index_explorations_on_fire_point_id"
   end
 
+  create_table "fire_evidences", force: :cascade do |t|
+    t.integer "fire_point_id", null: false
+    t.string "evidence_type"
+    t.text "source"
+    t.text "content"
+    t.string "source_url"
+    t.integer "confidence"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fire_point_id"], name: "index_fire_evidences_on_fire_point_id"
+  end
+
   create_table "fire_points", force: :cascade do |t|
     t.integer "string_spirit_id", null: false
     t.integer "coup_archet_id", null: false
@@ -126,6 +138,17 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_27_231026) do
     t.index ["coup_archet_id"], name: "index_fire_points_on_coup_archet_id"
     t.index ["oeuvre_id"], name: "index_fire_points_on_oeuvre_id"
     t.index ["string_spirit_id"], name: "index_fire_points_on_string_spirit_id"
+  end
+
+  create_table "fire_soul_narratives", force: :cascade do |t|
+    t.integer "fire_point_id", null: false
+    t.text "aesthetic_principle"
+    t.string "epoch_fingerprint"
+    t.text "compositeur_intention"
+    t.text "violinist_wisdom"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fire_point_id"], name: "index_fire_soul_narratives_on_fire_point_id"
   end
 
   create_table "instruments", force: :cascade do |t|
@@ -214,6 +237,19 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_27_231026) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tradition_deviations", force: :cascade do |t|
+    t.integer "fire_point_id", null: false
+    t.integer "compositeur_id", null: false
+    t.text "tradition_says"
+    t.text "violinist_does"
+    t.string "reason"
+    t.text "consequence"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["compositeur_id"], name: "index_tradition_deviations_on_compositeur_id"
+    t.index ["fire_point_id"], name: "index_tradition_deviations_on_fire_point_id"
+  end
+
   add_foreign_key "compositeurs", "epoques"
   add_foreign_key "coup_archet_tags", "coup_archets"
   add_foreign_key "coup_archet_tags", "tags"
@@ -228,9 +264,11 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_27_231026) do
   add_foreign_key "experiences", "cordes"
   add_foreign_key "experiences", "journal_labos"
   add_foreign_key "explorations", "fire_points"
+  add_foreign_key "fire_evidences", "fire_points"
   add_foreign_key "fire_points", "coup_archets"
   add_foreign_key "fire_points", "oeuvres"
   add_foreign_key "fire_points", "string_spirits"
+  add_foreign_key "fire_soul_narratives", "fire_points"
   add_foreign_key "journal_labos", "oeuvres"
   add_foreign_key "media", "exemple_musicals"
   add_foreign_key "oeuvres", "compositeurs"
@@ -240,4 +278,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_27_231026) do
   add_foreign_key "string_spirits", "compositeurs"
   add_foreign_key "string_spirits", "cordes"
   add_foreign_key "string_spirits", "epoques"
+  add_foreign_key "tradition_deviations", "compositeurs"
+  add_foreign_key "tradition_deviations", "fire_points"
 end

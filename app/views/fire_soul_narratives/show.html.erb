@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @fire_soul_narrative %>
+
+<div>
+  <%= link_to "Edit this fire soul narrative", edit_fire_soul_narrative_path(@fire_soul_narrative) %> |
+  <%= link_to "Back to fire soul narratives", fire_soul_narratives_path %>
+
+  <%= button_to "Destroy this fire soul narrative", @fire_soul_narrative, method: :delete %>
+</div>

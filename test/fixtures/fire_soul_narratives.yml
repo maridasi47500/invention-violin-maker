@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fire_point: one
+  aesthetic_principle: MyText
+  epoch_fingerprint: MyString
+  compositeur_intention: MyText
+  violinist_wisdom: MyText
+
+two:
+  fire_point: two
+  aesthetic_principle: MyText
+  epoch_fingerprint: MyString
+  compositeur_intention: MyText
+  violinist_wisdom: MyText

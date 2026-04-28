@@ -1,0 +1,43 @@
+<%= form_with(model: fire_soul_narrative) do |form| %>
+  <% if fire_soul_narrative.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(fire_soul_narrative.errors.count, "error") %> prohibited this fire_soul_narrative from being saved:</h2>
+
+      <ul>
+        <% fire_soul_narrative.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :fire_point_id, style: "display: block" %>
+    <%= form.collection_select :fire_point_id, FirePoint.all, :id, :myname %>
+
+  </div>
+
+  <div>
+    <%= form.label :aesthetic_principle, style: "display: block" %>
+    <%= form.textarea :aesthetic_principle, placeholder: "Heavy pressure near bridge creates weight without dampening" %>
+  </div>
+
+  <div>
+    <%= form.label :epoch_fingerprint, style: "display: block" %>
+    <%= form.text_field :epoch_fingerprint, placeholder: "Brahmsian, Baroque, 20th century rebellion" %>
+  </div>
+
+  <div>
+    <%= form.label :compositeur_intention, style: "display: block" %>
+    <%= form.textarea :compositeur_intention, placeholder: "Why THIS composer wanted THIS effect" %>
+  </div>
+
+  <div>
+    <%= form.label :violinist_wisdom, style: "display: block" %>
+    <%= form.textarea :violinist_wisdom, placeholder: "What master violinists said about it" %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

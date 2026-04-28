@@ -1,0 +1,47 @@
+<%= form_with(model: tradition_deviation) do |form| %>
+  <% if tradition_deviation.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(tradition_deviation.errors.count, "error") %> prohibited this tradition_deviation from being saved:</h2>
+
+      <ul>
+        <% tradition_deviation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :fire_point_id, style: "display: block" %>
+    <%= form.collection_select :fire_point_id, FirePoint.all, :id, :myname %>
+  </div>
+
+  <div>
+    <%= form.label :compositeur_id, style: "display: block" %>
+    <%= form.collection_select :compositeur_id, Compositeur.all, :id, :nom %>
+  </div>
+
+  <div>
+    <%= form.label :tradition_says, style: "display: block" %>
+    <%= form.textarea :tradition_says, placeholder: "What Baillot/Capet school doctrine says" %>
+  </div>
+
+  <div>
+    <%= form.label :violinist_does, style: "display: block" %>
+    <%= form.textarea :violinist_does, placeholder: "What actual master does differently" %>
+  </div>
+
+  <div>
+    <%= form.label :reason, style: "display: block" %>
+    <%= form.text_field :reason, placeholder: "Why the deviation (sound goal, interpretive freedom, etc)" %>
+  </div>
+
+  <div>
+    <%= form.label :consequence, style: "display: block" %>
+    <%= form.textarea :consequence, placeholder: "What changes in the sound/feeling" %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

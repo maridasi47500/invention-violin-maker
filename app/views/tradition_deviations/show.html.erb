@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @tradition_deviation %>
+
+<div>
+  <%= link_to "Edit this tradition deviation", edit_tradition_deviation_path(@tradition_deviation) %> |
+  <%= link_to "Back to tradition deviations", tradition_deviations_path %>
+
+  <%= button_to "Destroy this tradition deviation", @tradition_deviation, method: :delete %>
+</div>

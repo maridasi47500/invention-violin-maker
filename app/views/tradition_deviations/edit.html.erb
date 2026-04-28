@@ -1,0 +1,12 @@
+<% content_for :title, "Editing tradition deviation" %>
+
+<h1>Editing tradition deviation</h1>
+
+<%= render "form", tradition_deviation: @tradition_deviation %>
+
+<br>
+
+<div>
+  <%= link_to "Show this tradition deviation", @tradition_deviation %> |
+  <%= link_to "Back to tradition deviations", tradition_deviations_path %>
+</div>

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :tradition_deviations
+  resources :fire_evidences
+  resources :fire_soul_narratives
   resources :experiences
   resources :journal_labos
   resources :cordes

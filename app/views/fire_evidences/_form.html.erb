@@ -1,0 +1,49 @@
+<%= form_with(model: fire_evidence) do |form| %>
+  <% if fire_evidence.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(fire_evidence.errors.count, "error") %> prohibited this fire_evidence from being saved:</h2>
+
+      <ul>
+        <% fire_evidence.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :fire_point_id, style: "display: block" %>
+    <%= form.collection_select :fire_point_id, FirePoint.all, :id, :myname %>
+
+  </div>
+
+  <div>
+    <%= form.label :evidence_type, style: "display: block" %>
+<%hey=" \"IMSLP analysis\", \"masterclass quote\", \"radio discovery\", \"body experiment\", \"tradition record\""%>
+    <%= form.text_field :evidence_type, placeholder: hey %>
+  </div>
+
+  <div>
+    <%= form.label :source, style: "display: block" %>
+    <%= form.textarea :source, placeholder: "Where it came from" %>
+  </div>
+
+  <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.textarea :content, placeholder: "The actual evidence" %>
+  </div>
+
+  <div>
+    <%= form.label :source_url, style: "display: block" %>
+    <%= form.text_field :source_url, placeholder: "IMSLP link, interview link, etc." %>
+  </div>
+
+  <div>
+    <%= form.label :confidence, style: "display: block" %>
+    <%= form.number_field :confidence, placeholder: "1-5 scale of certainty" %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

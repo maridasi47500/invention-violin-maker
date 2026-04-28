@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Tradition deviations" %>
+
+<h1>Tradition deviations</h1>
+
+<div id="tradition_deviations">
+  <% @tradition_deviations.each do |tradition_deviation| %>
+    <%= render tradition_deviation %>
+    <p>
+      <%= link_to "Show this tradition deviation", tradition_deviation %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New tradition deviation", new_tradition_deviation_path %>

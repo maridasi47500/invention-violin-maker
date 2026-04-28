@@ -1,0 +1,2 @@
+module FireSoulNarrativesHelper
+end

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fire_point: one
+  compositeur: one
+  tradition_says: MyText
+  violinist_does: MyText
+  reason: MyString
+  consequence: MyText
+
+two:
+  fire_point: two
+  compositeur: two
+  tradition_says: MyText
+  violinist_does: MyText
+  reason: MyString
+  consequence: MyText

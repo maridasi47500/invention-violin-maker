@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Fire soul narratives" %>
+
+<h1>Fire soul narratives</h1>
+
+<div id="fire_soul_narratives">
+  <% @fire_soul_narratives.each do |fire_soul_narrative| %>
+    <%= render fire_soul_narrative %>
+    <p>
+      <%= link_to "Show this fire soul narrative", fire_soul_narrative %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New fire soul narrative", new_fire_soul_narrative_path %>

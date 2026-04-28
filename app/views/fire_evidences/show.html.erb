@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @fire_evidence %>
+
+<div>
+  <%= link_to "Edit this fire evidence", edit_fire_evidence_path(@fire_evidence) %> |
+  <%= link_to "Back to fire evidences", fire_evidences_path %>
+
+  <%= button_to "Destroy this fire evidence", @fire_evidence, method: :delete %>
+</div>
