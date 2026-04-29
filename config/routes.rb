@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :violonistes
+  resources :enregistrement_musicaux
+  resources :souvenirs
+  resources :session_jeux
+  resources :enregistrement_musicals
+  resources :lutheries
   resources :coup_archet_epoques
   resources :tradition_deviations
   resources :fire_evidences

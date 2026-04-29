@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @luthery %>
+
+<div>
+  <%= link_to "Edit this lutherie", edit_luthery_path(@luthery) %> |
+  <%= link_to "Back to lutheries", lutheries_path %>
+
+  <%= button_to "Destroy this lutherie", @luthery, method: :delete %>
+</div>

@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  instrument: one
+  date_session: 2026-04-28
+  heure_debut: 2026-04-28 23:02:05
+  duree_minutes: MyString
+  pieces_jouees: MyText
+  notes_session: MyText
+  ressenti_epoque: 1
+  epoque: one
+  reflexion_personnelle: MyText
+
+two:
+  instrument: two
+  date_session: 2026-04-28
+  heure_debut: 2026-04-28 23:02:05
+  duree_minutes: MyString
+  pieces_jouees: MyText
+  notes_session: MyText
+  ressenti_epoque: 1
+  epoque: two
+  reflexion_personnelle: MyText

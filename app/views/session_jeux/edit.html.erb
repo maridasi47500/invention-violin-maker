@@ -1,0 +1,12 @@
+<% content_for :title, "Editing session jeu" %>
+
+<h1>Editing session jeu</h1>
+
+<%= render "form", session_jeu: @session_jeu %>
+
+<br>
+
+<div>
+  <%= link_to "Show this session jeu", @session_jeu %> |
+  <%= link_to "Back to session jeux", session_jeux_path %>
+</div>

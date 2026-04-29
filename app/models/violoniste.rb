@@ -1,0 +1,2 @@
+class Violoniste < ApplicationRecord
+end

@@ -51,7 +51,6 @@
 <hr>
   <%= link_to "coup d'archet through epoques", coup_archet_epoques_path%>
 <br>
-  <%= link_to "violonistes", violonistes_path%>
   <%= link_to "lutheries", lutheries_path%>
   <%= link_to "souvenirs", souvenirs_path%>
   <%= link_to "session jeux", session_jeux_path%>

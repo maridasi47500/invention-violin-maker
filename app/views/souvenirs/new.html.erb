@@ -1,0 +1,11 @@
+<% content_for :title, "New souvenir" %>
+
+<h1>New souvenir</h1>
+
+<%= render "form", souvenir: @souvenir %>
+
+<br>
+
+<div>
+  <%= link_to "Back to souvenirs", souvenirs_path %>
+</div>

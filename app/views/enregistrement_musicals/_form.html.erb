@@ -1,0 +1,82 @@
+<%= form_with(model: enregistrement_musical) do |form| %>
+  <% if enregistrement_musical.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(enregistrement_musical.errors.count, "error") %> prohibited this enregistrement_musical from being saved:</h2>
+
+      <ul>
+        <% enregistrement_musical.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :oeuvre_id, style: "display: block" %>
+    <%= form.text_field :oeuvre_id %>
+  </div>
+
+  <div>
+    <%= form.label :violoniste_id, style: "display: block" %>
+    <%= form.text_field :violoniste_id %>
+  </div>
+
+  <div>
+    <%= form.label :date_enregistrement, style: "display: block" %>
+    <%= form.date_field :date_enregistrement %>
+  </div>
+
+  <div>
+    <%= form.label :format_media, style: "display: block" %>
+    <%= form.text_field :format_media %>
+  </div>
+
+  <div>
+    <%= form.label :label_editeur, style: "display: block" %>
+    <%= form.text_field :label_editeur %>
+  </div>
+
+  <div>
+    <%= form.label :url_streaming, style: "display: block" %>
+    <%= form.text_field :url_streaming %>
+  </div>
+
+  <div>
+    <%= form.label :lutherie_violon_id, style: "display: block" %>
+    <%= form.number_field :lutherie_violon_id %>
+  </div>
+
+  <div>
+    <%= form.label :lutherie_archet_id, style: "display: block" %>
+    <%= form.number_field :lutherie_archet_id %>
+  </div>
+
+  <div>
+    <%= form.label :notes_lutherie, style: "display: block" %>
+    <%= form.textarea :notes_lutherie %>
+  </div>
+
+  <div>
+    <%= form.label :source_achat, style: "display: block" %>
+    <%= form.text_field :source_achat %>
+  </div>
+
+  <div>
+    <%= form.label :date_achat_ou_decouverte, style: "display: block" %>
+    <%= form.date_field :date_achat_ou_decouverte %>
+  </div>
+
+  <div>
+    <%= form.label :epoque_compositeur_id, style: "display: block" %>
+    <%= form.number_field :epoque_compositeur_id %>
+  </div>
+
+  <div>
+    <%= form.label :epoque_enregistrement_id, style: "display: block" %>
+    <%= form.number_field :epoque_enregistrement_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

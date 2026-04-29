@@ -1,0 +1,64 @@
+<%= form_with(model: session_jeu) do |form| %>
+  <% if session_jeu.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(session_jeu.errors.count, "error") %> prohibited this session_jeu from being saved:</h2>
+
+      <ul>
+        <% session_jeu.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :instrument_id, style: "display: block" %>
+    <%= form.collection_select :instrument_id,Instrument.all, :id, :myname %>
+
+  </div>
+
+  <div>
+    <%= form.label :date_session, style: "display: block" %>
+    <%= form.date_field :date_session %>
+  </div>
+
+  <div>
+    <%= form.label :heure_debut, style: "display: block" %>
+    <%= form.time_field :heure_debut %>
+  </div>
+
+  <div>
+    <%= form.label :duree_minutes, style: "display: block" %>
+    <%= form.text_field :duree_minutes %>
+  </div>
+
+  <div>
+    <%= form.label :pieces_jouees, style: "display: block" %>
+    <%= form.textarea :pieces_jouees %>
+  </div>
+
+  <div>
+    <%= form.label :notes_session, style: "display: block" %>
+    <%= form.textarea :notes_session %>
+  </div>
+
+  <div>
+    <%= form.label :ressenti_epoque, style: "display: block" %>
+    <%= form.number_field :ressenti_epoque %>
+  </div>
+
+  <div>
+    <%= form.label :epoque_id, "epoque de la musique que tu joues pendant la session", style: "display: block" %>
+    <%= form.collection_select :epoque_id,Epoque.all, :id, :nom %>
+
+  </div>
+
+  <div>
+    <%= form.label :reflexion_personnelle, style: "display: block" %>
+    <%= form.textarea :reflexion_personnelle %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

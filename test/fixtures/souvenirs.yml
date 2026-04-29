@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  instrument: one
+  enregistrement_musical: one
+  session_jeu: one
+  date_ecoute: 2026-04-28
+  contexte: MyText
+  reflexion: MyText
+  resonnace_emotionnelle: 1
+  piece_deja_jouee: false
+
+two:
+  instrument: two
+  enregistrement_musical: two
+  session_jeu: two
+  date_ecoute: 2026-04-28
+  contexte: MyText
+  reflexion: MyText
+  resonnace_emotionnelle: 1
+  piece_deja_jouee: false

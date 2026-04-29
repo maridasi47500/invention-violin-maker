@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @violoniste %>
+
+<div>
+  <%= link_to "Edit this violoniste", edit_violoniste_path(@violoniste) %> |
+  <%= link_to "Back to violonistes", violonistes_path %>
+
+  <%= button_to "Destroy this violoniste", @violoniste, method: :delete %>
+</div>

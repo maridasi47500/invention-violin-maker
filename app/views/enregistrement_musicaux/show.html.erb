@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @enregistrement_musical %>
+
+<div>
+  <%= link_to "Edit this enregistrement musical", edit_enregistrement_musical_path(@enregistrement_musical) %> |
+  <%= link_to "Back to enregistrement musicaux", enregistrement_musicaux_path %>
+
+  <%= button_to "Destroy this enregistrement musical", @enregistrement_musical, method: :delete %>
+</div>

@@ -1,0 +1,98 @@
+<%= form_with(model: luthery) do |form| %>
+  <% if luthery.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(luthery.errors.count, "error") %> prohibited this luthery from being saved:</h2>
+
+      <ul>
+        <% luthery.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nom, style: "display: block" %>
+    <%= form.text_field :nom %>
+  </div>
+
+  <div>
+    <%= form.label :ville, style: "display: block" %>
+    <%= form.text_field :ville %>
+  </div>
+
+  <div>
+    <%= form.label :region, style: "display: block" %>
+    <%= form.text_field :region %>
+  </div>
+
+  <div>
+    <%= form.label :pays, style: "display: block" %>
+    <%= form.text_field :pays %>
+  </div>
+
+  <div>
+    <%= form.label :type_lutherie, style: "display: block" %>
+    <%= form.text_field :type_lutherie %>
+  </div>
+
+  <div>
+    <%= form.label :description_typique, style: "display: block" %>
+    <%= form.textarea :description_typique %>
+  </div>
+
+  <div>
+    <%= form.label :materiel_caracteristique, style: "display: block" %>
+    <%= form.textarea :materiel_caracteristique %>
+  </div>
+
+  <div>
+    <%= form.label :periode_fondation_debut, style: "display: block" %>
+    <%= form.number_field :periode_fondation_debut %>
+  </div>
+
+  <div>
+    <%= form.label :periode_fondation_fin, style: "display: block" %>
+    <%= form.number_field :periode_fondation_fin %>
+
+  </div>
+
+  <div>
+    <%= form.label :epoque_id, style: "display: block" %>
+    <%= form.collection_select :epoque_id,  Epoque.all, :id, :nom %>
+  </div>
+
+  <div>
+    <%= form.label :disponible_achat_neuf, style: "display: block" %>
+    <%= form.checkbox :disponible_achat_neuf %>
+  </div>
+
+  <div>
+    <%= form.label :disponible_occasion, style: "display: block" %>
+    <%= form.checkbox :disponible_occasion %>
+  </div>
+
+  <div>
+    <%= form.label :prix_approximatif_eur, style: "display: block" %>
+    <%= form.number_field :prix_approximatif_eur %>
+  </div>
+
+  <div>
+    <%= form.label :plateforme_achat, style: "display: block" %>
+    <%= form.text_field :plateforme_achat %>
+  </div>
+
+  <div>
+    <%= form.label :produit_touristique, style: "display: block" %>
+    <%= form.checkbox :produit_touristique %>
+  </div>
+
+  <div>
+    <%= form.label :heritage_culturel, style: "display: block" %>
+    <%= form.textarea :heritage_culturel %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

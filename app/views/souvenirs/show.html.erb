@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @souvenir %>
+
+<div>
+  <%= link_to "Edit this souvenir", edit_souvenir_path(@souvenir) %> |
+  <%= link_to "Back to souvenirs", souvenirs_path %>
+
+  <%= button_to "Destroy this souvenir", @souvenir, method: :delete %>
+</div>

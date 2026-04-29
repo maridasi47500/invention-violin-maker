@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  oeuvre: one
+  violoniste: one
+  date_enregistrement: 2026-04-28
+  format_media: MyString
+  label_editeur: MyString
+  url_streaming: MyString
+  lutherie_violon_id: 1
+  lutherie_archet_id: 1
+  notes_lutherie: MyText
+  source_achat: MyString
+  date_achat_ou_decouverte: 2026-04-28
+  epoque_compositeur_id: 1
+  epoque_enregistrement_id: 1
+
+two:
+  oeuvre: two
+  violoniste: two
+  date_enregistrement: 2026-04-28
+  format_media: MyString
+  label_editeur: MyString
+  url_streaming: MyString
+  lutherie_violon_id: 1
+  lutherie_archet_id: 1
+  notes_lutherie: MyText
+  source_achat: MyString
+  date_achat_ou_decouverte: 2026-04-28
+  epoque_compositeur_id: 1
+  epoque_enregistrement_id: 1
