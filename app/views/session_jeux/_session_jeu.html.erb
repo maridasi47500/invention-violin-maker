@@ -1,7 +1,7 @@
 <div id="<%= dom_id session_jeu %>">
   <p>
     <strong>Instrument:</strong>
-    <%= session_jeu.instrument_id %>
+    <%= session_jeu.instrument.myname %>
   </p>
 
   <p>
@@ -11,7 +11,7 @@
 
   <p>
     <strong>Heure debut:</strong>
-    <%= session_jeu.heure_debut %>
+    <%= I18n.l(session_jeu.heure_debut, format: :short) %>
   </p>
 
   <p>
@@ -36,7 +36,7 @@
 
   <p>
     <strong>Epoque:</strong>
-    <%= session_jeu.epoque_id %>
+    <%= session_jeu.epoque.nom %>
   </p>
 
   <p>

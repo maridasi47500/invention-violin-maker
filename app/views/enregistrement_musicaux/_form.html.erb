@@ -13,7 +13,7 @@
 
   <div>
     <%= form.label :oeuvre_id, style: "display: block" %>
-    <%= form.collection_select :oeuvre_id,Oeuvre.all, :id, :nom %>
+    <%= form.collection_select :oeuvre_id,Oeuvre.all, :id, :myname %>
 
   </div>
 
@@ -71,12 +71,12 @@
 
   <div>
     <%= form.label :epoque_compositeur_id, style: "display: block" %>
-    <%= form.number_field :epoque_compositeur_id %>
+    <%= form.collection_select :epoque_compositeur_id, Epoque.all, :id, :nom %>
   </div>
 
   <div>
     <%= form.label :epoque_enregistrement_id, style: "display: block" %>
-    <%= form.number_field :epoque_enregistrement_id %>
+    <%= form.collection_select :epoque_enregistrement_id, Epoque.all, :id, :nom %>
   </div>
 
   <div>

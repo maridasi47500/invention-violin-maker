@@ -1,12 +1,12 @@
 <div id="<%= dom_id enregistrement_musical %>">
   <p>
     <strong>Oeuvre:</strong>
-    <%= enregistrement_musical.oeuvre_id %>
+    <%= enregistrement_musical.oeuvre.myname %>
   </p>
 
   <p>
     <strong>Violoniste:</strong>
-    <%= enregistrement_musical.violoniste_id %>
+    <%= enregistrement_musical.violoniste.nom %>
   </p>
 
   <p>
@@ -31,12 +31,12 @@
 
   <p>
     <strong>Lutherie violon:</strong>
-    <%= enregistrement_musical.lutherie_violon_id %>
+    <%= enregistrement_musical.lutherie_violon.myname %>
   </p>
 
   <p>
     <strong>Lutherie archet:</strong>
-    <%= enregistrement_musical.lutherie_archet_id %>
+    <%= enregistrement_musical.lutherie_archet.myname %>
   </p>
 
   <p>
@@ -56,12 +56,12 @@
 
   <p>
     <strong>Epoque compositeur:</strong>
-    <%= enregistrement_musical.epoque_compositeur_id %>
+    <%= enregistrement_musical.epoque_compositeur.nom %>
   </p>
 
   <p>
     <strong>Epoque enregistrement:</strong>
-    <%= enregistrement_musical.epoque_enregistrement_id %>
+    <%= enregistrement_musical.epoque_enregistrement.nom %>
   </p>
 
 </div>

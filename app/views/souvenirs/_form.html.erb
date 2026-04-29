@@ -12,17 +12,17 @@
   <% end %>
 
   <div>
-    <%= form.label :instrument_id, style: "display: block" %>
+    <%= form.label :instrument_id, "mon instrument", style: "display: block" %>
     <%= form.collection_select :instrument_id,Instrument.all, :id, :myname %>
   </div>
 
   <div>
-    <%= form.label :enregistrement_musical_id, style: "display: block" %>
+    <%= form.label :enregistrement_musical_id,"piece que je veux jouer",  style: "display: block" %>
     <%= form.collection_select :enregistrement_musical_id,EnregistrementMusical.all, :id, :myname %>
   </div>
 
   <div>
-    <%= form.label :session_jeu_id, style: "display: block" %>
+    <%= form.label :session_jeu_id,"ma session de jeu", style: "display: block" %>
     <%= form.collection_select :session_jeu_id,SessionJeu.all, :id, :myname %>
   </div>
 
