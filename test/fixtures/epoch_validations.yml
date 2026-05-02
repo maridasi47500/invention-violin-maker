@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  epoch_hypothesis: one
+  actual_bow_stroke: MyString
+  matches_hypothesis: false
+  discrepancy: MyText
+
+two:
+  epoch_hypothesis: two
+  actual_bow_stroke: MyString
+  matches_hypothesis: false
+  discrepancy: MyText

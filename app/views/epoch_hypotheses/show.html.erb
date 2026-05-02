@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @epoch_hypothesis %>
+
+<div>
+  <%= link_to "Edit this epoch hypothesis", edit_epoch_hypothesis_path(@epoch_hypothesis) %> |
+  <%= link_to "Back to epoch hypotheses", epoch_hypotheses_path %>
+
+  <%= button_to "Destroy this epoch hypothesis", @epoch_hypothesis, method: :delete %>
+</div>

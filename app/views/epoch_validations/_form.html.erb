@@ -1,0 +1,37 @@
+<%= form_with(model: epoch_validation) do |form| %>
+  <% if epoch_validation.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(epoch_validation.errors.count, "error") %> prohibited this epoch_validation from being saved:</h2>
+
+      <ul>
+        <% epoch_validation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :epoch_hypothesis_id, style: "display: block" %>
+    <%= form.text_field :epoch_hypothesis_id %>
+  </div>
+
+  <div>
+    <%= form.label :actual_bow_stroke, style: "display: block" %>
+    <%= form.text_field :actual_bow_stroke %>
+  </div>
+
+  <div>
+    <%= form.label :matches_hypothesis, style: "display: block" %>
+    <%= form.checkbox :matches_hypothesis %>
+  </div>
+
+  <div>
+    <%= form.label :discrepancy, style: "display: block" %>
+    <%= form.textarea :discrepancy %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

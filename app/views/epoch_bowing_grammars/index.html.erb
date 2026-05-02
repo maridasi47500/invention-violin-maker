@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Epoch bowing grammars" %>
+
+<h1>Epoch bowing grammars</h1>
+
+<div id="epoch_bowing_grammars">
+  <% @epoch_bowing_grammars.each do |epoch_bowing_grammar| %>
+    <%= render epoch_bowing_grammar %>
+    <p>
+      <%= link_to "Show this epoch bowing grammar", epoch_bowing_grammar %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New epoch bowing grammar", new_epoch_bowing_grammar_path %>

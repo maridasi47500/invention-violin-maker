@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @epoch_bowing_grammar %>
+
+<div>
+  <%= link_to "Edit this epoch bowing grammar", edit_epoch_bowing_grammar_path(@epoch_bowing_grammar) %> |
+  <%= link_to "Back to epoch bowing grammars", epoch_bowing_grammars_path %>
+
+  <%= button_to "Destroy this epoch bowing grammar", @epoch_bowing_grammar, method: :delete %>
+</div>

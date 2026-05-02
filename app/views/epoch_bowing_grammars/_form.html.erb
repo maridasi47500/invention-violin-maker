@@ -1,0 +1,37 @@
+<%= form_with(model: epoch_bowing_grammar) do |form| %>
+  <% if epoch_bowing_grammar.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(epoch_bowing_grammar.errors.count, "error") %> prohibited this epoch_bowing_grammar from being saved:</h2>
+
+      <ul>
+        <% epoch_bowing_grammar.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :epoch, style: "display: block" %>
+    <%= form.text_field :epoch %>
+  </div>
+
+  <div>
+    <%= form.label :bow_stroke, style: "display: block" %>
+    <%= form.text_field :bow_stroke %>
+  </div>
+
+  <div>
+    <%= form.label :context, style: "display: block" %>
+    <%= form.textarea :context %>
+  </div>
+
+  <div>
+    <%= form.label :likelihood, style: "display: block" %>
+    <%= form.number_field :likelihood %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

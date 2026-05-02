@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @discovered_misreading %>
+
+<div>
+  <%= link_to "Edit this discovered misreading", edit_discovered_misreading_path(@discovered_misreading) %> |
+  <%= link_to "Back to discovered misreadings", discovered_misreadings_path %>
+
+  <%= button_to "Destroy this discovered misreading", @discovered_misreading, method: :delete %>
+</div>

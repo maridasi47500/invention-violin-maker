@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Epoch validations" %>
+
+<h1>Epoch validations</h1>
+
+<div id="epoch_validations">
+  <% @epoch_validations.each do |epoch_validation| %>
+    <%= render epoch_validation %>
+    <p>
+      <%= link_to "Show this epoch validation", epoch_validation %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New epoch validation", new_epoch_validation_path %>

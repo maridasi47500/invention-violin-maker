@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  experience: one
+  epoch_detected: MyString
+  bow_stroke_hypothesis: MyString
+  confidence_percent: 1
+  reason: MyText
+
+two:
+  experience: two
+  epoch_detected: MyString
+  bow_stroke_hypothesis: MyString
+  confidence_percent: 1
+  reason: MyText

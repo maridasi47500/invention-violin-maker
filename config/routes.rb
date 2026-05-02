@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :discovered_misreadings
+  resources :epoch_validations
+  resources :epoch_hypotheses
+  resources :epoch_bowing_grammars
+  resources :epoch_clues
   resources :finger_vibrato_archets
   resources :elbow_breathings
   resources :bow_trajectories

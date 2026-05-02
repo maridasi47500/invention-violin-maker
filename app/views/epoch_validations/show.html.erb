@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @epoch_validation %>
+
+<div>
+  <%= link_to "Edit this epoch validation", edit_epoch_validation_path(@epoch_validation) %> |
+  <%= link_to "Back to epoch validations", epoch_validations_path %>
+
+  <%= button_to "Destroy this epoch validation", @epoch_validation, method: :delete %>
+</div>

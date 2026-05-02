@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @epoch_clue %>
+
+<div>
+  <%= link_to "Edit this epoch clue", edit_epoch_clue_path(@epoch_clue) %> |
+  <%= link_to "Back to epoch clues", epoch_clues_path %>
+
+  <%= button_to "Destroy this epoch clue", @epoch_clue, method: :delete %>
+</div>

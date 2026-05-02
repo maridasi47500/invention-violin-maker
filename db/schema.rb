@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_02_014200) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_02_022519) do
   create_table "body_mechanics", force: :cascade do |t|
     t.integer "elbow_angle_degrees"
     t.string "elbow_state"
@@ -119,6 +119,17 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_02_014200) do
     t.index ["tag_id"], name: "index_coup_archets_tags_on_tag_id"
   end
 
+  create_table "discovered_misreadings", force: :cascade do |t|
+    t.integer "epoch_hypothesis_id", null: false
+    t.string "from_clue"
+    t.integer "epoch_id", null: false
+    t.string "lesson"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["epoch_hypothesis_id"], name: "index_discovered_misreadings_on_epoch_hypothesis_id"
+    t.index ["epoch_id"], name: "index_discovered_misreadings_on_epoch_id"
+  end
+
   create_table "elbow_breathings", force: :cascade do |t|
     t.integer "body_mechanic_id", null: false
     t.string "micro_release_frequency"
@@ -149,6 +160,47 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_02_014200) do
     t.datetime "updated_at", null: false
     t.index ["oeuvre_id"], name: "index_enregistrement_musicaux_on_oeuvre_id"
     t.index ["violoniste_id"], name: "index_enregistrement_musicaux_on_violoniste_id"
+  end
+
+  create_table "epoch_bowing_grammars", force: :cascade do |t|
+    t.string "epoch"
+    t.string "bow_stroke"
+    t.text "context"
+    t.integer "likelihood"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "epoch_clues", force: :cascade do |t|
+    t.integer "fire_point_id", null: false
+    t.string "clue_type"
+    t.string "value"
+    t.string "epoch"
+    t.integer "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fire_point_id"], name: "index_epoch_clues_on_fire_point_id"
+  end
+
+  create_table "epoch_hypotheses", force: :cascade do |t|
+    t.integer "experience_id", null: false
+    t.string "epoch_detected"
+    t.string "bow_stroke_hypothesis"
+    t.integer "confidence_percent"
+    t.text "reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["experience_id"], name: "index_epoch_hypotheses_on_experience_id"
+  end
+
+  create_table "epoch_validations", force: :cascade do |t|
+    t.integer "epoch_hypothesis_id", null: false
+    t.string "actual_bow_stroke"
+    t.boolean "matches_hypothesis"
+    t.text "discrepancy"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["epoch_hypothesis_id"], name: "index_epoch_validations_on_epoch_hypothesis_id"
   end
 
   create_table "epoques", force: :cascade do |t|
@@ -421,9 +473,14 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_02_014200) do
   add_foreign_key "coup_archets", "style_musicals"
   add_foreign_key "coup_archets_tags", "coup_archets"
   add_foreign_key "coup_archets_tags", "tags"
+  add_foreign_key "discovered_misreadings", "epoch_hypotheses"
+  add_foreign_key "discovered_misreadings", "epoches"
   add_foreign_key "elbow_breathings", "body_mechanics"
   add_foreign_key "enregistrement_musicaux", "oeuvres"
   add_foreign_key "enregistrement_musicaux", "violonistes"
+  add_foreign_key "epoch_clues", "fire_points"
+  add_foreign_key "epoch_hypotheses", "experiences"
+  add_foreign_key "epoch_validations", "epoch_hypotheses"
   add_foreign_key "exemple_musicals", "coup_archets"
   add_foreign_key "exemple_musicals", "oeuvres"
   add_foreign_key "experiences", "cordes"

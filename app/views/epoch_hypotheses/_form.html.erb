@@ -1,0 +1,42 @@
+<%= form_with(model: epoch_hypothesis) do |form| %>
+  <% if epoch_hypothesis.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(epoch_hypothesis.errors.count, "error") %> prohibited this epoch_hypothesis from being saved:</h2>
+
+      <ul>
+        <% epoch_hypothesis.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :experience_id, style: "display: block" %>
+    <%= form.text_field :experience_id %>
+  </div>
+
+  <div>
+    <%= form.label :epoch_detected, style: "display: block" %>
+    <%= form.text_field :epoch_detected %>
+  </div>
+
+  <div>
+    <%= form.label :bow_stroke_hypothesis, style: "display: block" %>
+    <%= form.text_field :bow_stroke_hypothesis %>
+  </div>
+
+  <div>
+    <%= form.label :confidence_percent, style: "display: block" %>
+    <%= form.number_field :confidence_percent %>
+  </div>
+
+  <div>
+    <%= form.label :reason, style: "display: block" %>
+    <%= form.textarea :reason %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

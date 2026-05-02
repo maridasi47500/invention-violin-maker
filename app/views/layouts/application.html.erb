@@ -57,6 +57,17 @@
   <%= link_to "session jeux", session_jeux_path%>
   <%= link_to "enregistrement musicaux", enregistrement_musicaux_path%>
 
+<br>
+<%=link_to "mecanique du corps", body_mechanics_path%>
+<%=link_to "trajectoires de l'archet", bow_trajectories_path%>
+<%=link_to "respirations du coude", elbow_breathings_path%>
+<%=link_to "archet de vibrato et du doigt", finger_vibrato_archets_path%>
+<br>
+<%=link_to "indice d'époques", epoch_clues_path%>
+<%=link_to "grammaire d'archet d'epoque", epoch_bowing_grammars_path%>
+<%=link_to "hypothese d'époque", epoch_hypotheses_path%>
+<%=link_to "validations d'époques", epoch_validations_path%>
+<%=link_to "erreur de lecture decouvertes", discovered_misreadings_path%>
 
     <%= yield %>
   </body>

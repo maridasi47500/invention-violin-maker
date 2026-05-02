@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  epoch: MyString
+  bow_stroke: MyString
+  context: MyText
+  likelihood: 1
+
+two:
+  epoch: MyString
+  bow_stroke: MyString
+  context: MyText
+  likelihood: 1

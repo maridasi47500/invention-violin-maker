@@ -1,0 +1,12 @@
+<% content_for :title, "Editing epoch hypothesis" %>
+
+<h1>Editing epoch hypothesis</h1>
+
+<%= render "form", epoch_hypothesis: @epoch_hypothesis %>
+
+<br>
+
+<div>
+  <%= link_to "Show this epoch hypothesis", @epoch_hypothesis %> |
+  <%= link_to "Back to epoch hypotheses", epoch_hypotheses_path %>
+</div>

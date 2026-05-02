@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Discovered misreadings" %>
+
+<h1>Discovered misreadings</h1>
+
+<div id="discovered_misreadings">
+  <% @discovered_misreadings.each do |discovered_misreading| %>
+    <%= render discovered_misreading %>
+    <p>
+      <%= link_to "Show this discovered misreading", discovered_misreading %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New discovered misreading", new_discovered_misreading_path %>

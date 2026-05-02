@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  epoch_hypothesis: one
+  from_clue: MyString
+  epoch: one
+  lesson: MyString
+
+two:
+  epoch_hypothesis: two
+  from_clue: MyString
+  epoch: two
+  lesson: MyString
