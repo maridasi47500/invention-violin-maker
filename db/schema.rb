@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_04_29_024029) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_02_014200) do
+  create_table "body_mechanics", force: :cascade do |t|
+    t.integer "elbow_angle_degrees"
+    t.string "elbow_state"
+    t.string "wrist_angle_state"
+    t.integer "wrist_extension_degrees"
+    t.string "index_phalange_state"
+    t.string "thumb_position"
+    t.string "shoulder_position"
+    t.integer "violin_angle_degrees"
+    t.string "back_posture"
+    t.string "chin_pressure"
+    t.boolean "bow_parallelism_check"
+    t.string "bow_deviation_notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bow_trajectories", force: :cascade do |t|
+    t.string "bow_stroke_type"
+    t.string "friction_trajectory"
+    t.string "empty_trajectory"
+    t.integer "air_time_percentage"
+    t.integer "resonance_quality"
+    t.text "tension_buildup"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "caracteres", force: :cascade do |t|
     t.string "nom"
     t.datetime "created_at", null: false
@@ -91,6 +119,18 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_29_024029) do
     t.index ["tag_id"], name: "index_coup_archets_tags_on_tag_id"
   end
 
+  create_table "elbow_breathings", force: :cascade do |t|
+    t.integer "body_mechanic_id", null: false
+    t.string "micro_release_frequency"
+    t.string "breathing_present"
+    t.integer "rigidity_level"
+    t.integer "sound_quality_rigid"
+    t.integer "sound_quality_breathing"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["body_mechanic_id"], name: "index_elbow_breathings_on_body_mechanic_id"
+  end
+
   create_table "enregistrement_musicaux", force: :cascade do |t|
     t.integer "oeuvre_id", null: false
     t.integer "violoniste_id", null: false
@@ -138,6 +178,12 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_29_024029) do
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "pre_friction_setup"
+    t.text "hand_modifications_during"
+    t.string "post_friction_action"
+    t.boolean "reader_can_sightread"
+    t.boolean "reader_recognizes_epoch"
+    t.text "authenticity_gap"
     t.index ["corde_id"], name: "index_experiences_on_corde_id"
     t.index ["journal_labo_id"], name: "index_experiences_on_journal_labo_id"
   end
@@ -151,6 +197,19 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_29_024029) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["fire_point_id"], name: "index_explorations_on_fire_point_id"
+  end
+
+  create_table "finger_vibrato_archets", force: :cascade do |t|
+    t.integer "body_mechanic_id", null: false
+    t.boolean "phalange_oscillation"
+    t.boolean "vibrato_natural"
+    t.float "oscillation_frequency_hz"
+    t.integer "nuance_quality"
+    t.integer "sound_flat_without_vibrato"
+    t.integer "sound_alive_with_vibrato"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["body_mechanic_id"], name: "index_finger_vibrato_archets_on_body_mechanic_id"
   end
 
   create_table "fire_evidences", force: :cascade do |t|
@@ -171,6 +230,11 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_29_024029) do
     t.integer "oeuvre_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "valid_epochs"
+    t.json "invalid_epochs"
+    t.json "cross_piece_validation"
+    t.boolean "was_false_positive", default: false
+    t.text "false_positive_reason"
     t.index ["coup_archet_id"], name: "index_fire_points_on_coup_archet_id"
     t.index ["oeuvre_id"], name: "index_fire_points_on_oeuvre_id"
     t.index ["string_spirit_id"], name: "index_fire_points_on_string_spirit_id"
@@ -357,6 +421,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_29_024029) do
   add_foreign_key "coup_archets", "style_musicals"
   add_foreign_key "coup_archets_tags", "coup_archets"
   add_foreign_key "coup_archets_tags", "tags"
+  add_foreign_key "elbow_breathings", "body_mechanics"
   add_foreign_key "enregistrement_musicaux", "oeuvres"
   add_foreign_key "enregistrement_musicaux", "violonistes"
   add_foreign_key "exemple_musicals", "coup_archets"
@@ -364,6 +429,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_29_024029) do
   add_foreign_key "experiences", "cordes"
   add_foreign_key "experiences", "journal_labos"
   add_foreign_key "explorations", "fire_points"
+  add_foreign_key "finger_vibrato_archets", "body_mechanics"
   add_foreign_key "fire_evidences", "fire_points"
   add_foreign_key "fire_points", "coup_archets"
   add_foreign_key "fire_points", "oeuvres"
