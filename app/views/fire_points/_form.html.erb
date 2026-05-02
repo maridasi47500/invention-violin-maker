@@ -25,6 +25,26 @@
     <%= form.label :oeuvre_id, style: "display: block" %>
     <%= form.collection_select :oeuvre_id, Oeuvre.all, :id, :titre %>
   </div>
+  <div>
+    <%= form.label :valid_epochs, style: "display: block" %>
+    <%= form.collection_select :valid_epochs, Epoque.all, :id, :nom, multiple: true %>
+  </div>
+  <div>
+    <%= form.label :invalid_epochs, style: "display: block" %>
+    <%= form.collection_select :invalid_epochs, Epoque.all, :id, :nom, multiple: true %>
+  </div>
+  <div>
+    <%= form.label :cross_piece_validation, style: "display: block" %>
+    <%= form.collection_select :cross_piece_validation, Oeuvre.all, :id, :titre,multiple: true %>
+  </div>
+  <div>
+    <%= form.label :was_false_positive, style: "display: block" %>
+    <%= form.check_box :was_false_positive %>
+  </div>
+  <div>
+    <%= form.label :false_positive_reason, style: "display: block" %>
+    <%= form.textarea :false_positive_reason %>
+  </div>
 
   <div>
     <%= form.submit %>

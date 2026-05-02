@@ -45,6 +45,30 @@
     <%= form.label :note, style: "display: block" %>
     <%= form.textarea :note %>
   </div>
+  <div>
+    <%= form.label :pre_friction_setup, style: "display: block" %>
+    <%= form.textarea :pre_friction_setup %>
+  </div>
+  <div>
+    <%= form.label :hand_modifications_during, style: "display: block" %>
+    <%= form.textarea :hand_modifications_during %>
+  </div>
+  <div>
+    <%= form.label :post_friction_action, style: "display: block" %>
+    <%= form.textarea :post_friction_action %>
+  </div>
+  <div>
+    <%= form.label :reader_can_sightread, style: "display: block" %>
+    <%= form.check_box :reader_can_sightread %>
+  </div>
+  <div>
+    <%= form.label :reader_recognizes_epoch, style: "display: block" %>
+    <%= form.check_box :reader_recognizes_epoch %>
+  </div>
+  <div>
+    <%= form.label :authenticity_gap, style: "display: block" %>
+    <%= form.textarea :authenticity_gap %>
+  </div>
 
   <div>
     <%= form.submit %>

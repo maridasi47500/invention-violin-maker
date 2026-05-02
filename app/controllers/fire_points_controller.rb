@@ -65,6 +65,6 @@ class FirePointsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fire_point_params
-      params.expect(fire_point: [ :string_spirit_id, :coup_archet_id, :oeuvre_id ])
+      params.expect(fire_point: [ :string_spirit_id, :coup_archet_id, :oeuvre_id,:valid_epochs, :invalid_epochs, :cross_piece_validation, :was_false_positive, :false_positive_reason ])
     end
 end

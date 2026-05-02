@@ -65,6 +65,6 @@ class ExperiencesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def experience_params
-      params.expect(experience: [ :journal_labo_id, :corde_id, :point_archet, :longueur, :pression, :ressenti, :note ])
+      params.expect(experience: [ :journal_labo_id, :corde_id, :point_archet, :longueur, :pression, :ressenti, :note, :pre_friction_setup, :hand_modifications_during, :post_friction_action, :reader_can_sightread, :reader_recognizes_epoch, :authenticity_gap ])
     end
 end
