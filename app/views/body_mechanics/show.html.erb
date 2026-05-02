@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @body_mechanic %>
+
+<div>
+  <%= link_to "Edit this body mechanic", edit_body_mechanic_path(@body_mechanic) %> |
+  <%= link_to "Back to body mechanics", body_mechanics_path %>
+
+  <%= button_to "Destroy this body mechanic", @body_mechanic, method: :delete %>
+</div>

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body_mechanic: one
+  micro_release_frequency: MyString
+  breathing_present: MyString
+  rigidity_level: 1
+  sound_quality_rigid: 1
+  sound_quality_breathing: 1
+
+two:
+  body_mechanic: two
+  micro_release_frequency: MyString
+  breathing_present: MyString
+  rigidity_level: 1
+  sound_quality_rigid: 1
+  sound_quality_breathing: 1

@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Elbow breathings" %>
+
+<h1>Elbow breathings</h1>
+
+<div id="elbow_breathings">
+  <% @elbow_breathings.each do |elbow_breathing| %>
+    <%= render elbow_breathing %>
+    <p>
+      <%= link_to "Show this elbow breathing", elbow_breathing %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New elbow breathing", new_elbow_breathing_path %>

@@ -1,0 +1,52 @@
+<%= form_with(model: finger_vibrato_archet) do |form| %>
+  <% if finger_vibrato_archet.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(finger_vibrato_archet.errors.count, "error") %> prohibited this finger_vibrato_archet from being saved:</h2>
+
+      <ul>
+        <% finger_vibrato_archet.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :body_mechanic_id, style: "display: block" %>
+    <%= form.text_field :body_mechanic_id %>
+  </div>
+
+  <div>
+    <%= form.label :phalange_oscillation, style: "display: block" %>
+    <%= form.checkbox :phalange_oscillation %>
+  </div>
+
+  <div>
+    <%= form.label :vibrato_natural, style: "display: block" %>
+    <%= form.checkbox :vibrato_natural %>
+  </div>
+
+  <div>
+    <%= form.label :oscillation_frequency_hz, style: "display: block" %>
+    <%= form.text_field :oscillation_frequency_hz %>
+  </div>
+
+  <div>
+    <%= form.label :nuance_quality, style: "display: block" %>
+    <%= form.number_field :nuance_quality %>
+  </div>
+
+  <div>
+    <%= form.label :sound_flat_without_vibrato, style: "display: block" %>
+    <%= form.number_field :sound_flat_without_vibrato %>
+  </div>
+
+  <div>
+    <%= form.label :sound_alive_with_vibrato, style: "display: block" %>
+    <%= form.number_field :sound_alive_with_vibrato %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

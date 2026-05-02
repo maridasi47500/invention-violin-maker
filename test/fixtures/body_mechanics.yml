@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  elbow_angle_degrees: 1
+  elbow_state: MyString
+  wrist_angle_state: MyString
+  wrist_extension_degrees: 1
+  index_phalange_state: MyString
+  thumb_position: MyString
+  shoulder_position: MyString
+  violin_angle_degrees: 1
+  back_posture: MyString
+  chin_pressure: MyString
+  bow_parallelism_check: false
+  bow_deviation_notes: MyString
+
+two:
+  elbow_angle_degrees: 1
+  elbow_state: MyString
+  wrist_angle_state: MyString
+  wrist_extension_degrees: 1
+  index_phalange_state: MyString
+  thumb_position: MyString
+  shoulder_position: MyString
+  violin_angle_degrees: 1
+  back_posture: MyString
+  chin_pressure: MyString
+  bow_parallelism_check: false
+  bow_deviation_notes: MyString

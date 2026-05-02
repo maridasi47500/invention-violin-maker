@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :finger_vibrato_archets
+  resources :elbow_breathings
+  resources :bow_trajectories
+  resources :body_mechanics
   resources :violonistes
   resources :enregistrement_musicaux
   resources :souvenirs

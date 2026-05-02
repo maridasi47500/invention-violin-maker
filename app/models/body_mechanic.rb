@@ -1,0 +1,2 @@
+class BodyMechanic < ApplicationRecord
+end

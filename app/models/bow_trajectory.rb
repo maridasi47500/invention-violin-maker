@@ -1,0 +1,2 @@
+class BowTrajectory < ApplicationRecord
+end

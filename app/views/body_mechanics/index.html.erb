@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Body mechanics" %>
+
+<h1>Body mechanics</h1>
+
+<div id="body_mechanics">
+  <% @body_mechanics.each do |body_mechanic| %>
+    <%= render body_mechanic %>
+    <p>
+      <%= link_to "Show this body mechanic", body_mechanic %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New body mechanic", new_body_mechanic_path %>

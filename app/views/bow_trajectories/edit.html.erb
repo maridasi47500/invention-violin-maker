@@ -1,0 +1,12 @@
+<% content_for :title, "Editing bow trajectory" %>
+
+<h1>Editing bow trajectory</h1>
+
+<%= render "form", bow_trajectory: @bow_trajectory %>
+
+<br>
+
+<div>
+  <%= link_to "Show this bow trajectory", @bow_trajectory %> |
+  <%= link_to "Back to bow trajectories", bow_trajectories_path %>
+</div>

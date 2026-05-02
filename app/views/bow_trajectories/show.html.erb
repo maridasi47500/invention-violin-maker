@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @bow_trajectory %>
+
+<div>
+  <%= link_to "Edit this bow trajectory", edit_bow_trajectory_path(@bow_trajectory) %> |
+  <%= link_to "Back to bow trajectories", bow_trajectories_path %>
+
+  <%= button_to "Destroy this bow trajectory", @bow_trajectory, method: :delete %>
+</div>

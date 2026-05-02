@@ -1,0 +1,47 @@
+<%= form_with(model: elbow_breathing) do |form| %>
+  <% if elbow_breathing.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(elbow_breathing.errors.count, "error") %> prohibited this elbow_breathing from being saved:</h2>
+
+      <ul>
+        <% elbow_breathing.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :body_mechanic_id, style: "display: block" %>
+    <%= form.text_field :body_mechanic_id %>
+  </div>
+
+  <div>
+    <%= form.label :micro_release_frequency, style: "display: block" %>
+    <%= form.text_field :micro_release_frequency %>
+  </div>
+
+  <div>
+    <%= form.label :breathing_present, style: "display: block" %>
+    <%= form.text_field :breathing_present %>
+  </div>
+
+  <div>
+    <%= form.label :rigidity_level, style: "display: block" %>
+    <%= form.number_field :rigidity_level %>
+  </div>
+
+  <div>
+    <%= form.label :sound_quality_rigid, style: "display: block" %>
+    <%= form.number_field :sound_quality_rigid %>
+  </div>
+
+  <div>
+    <%= form.label :sound_quality_breathing, style: "display: block" %>
+    <%= form.number_field :sound_quality_breathing %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

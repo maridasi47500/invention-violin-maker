@@ -1,0 +1,47 @@
+<%= form_with(model: bow_trajectory) do |form| %>
+  <% if bow_trajectory.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(bow_trajectory.errors.count, "error") %> prohibited this bow_trajectory from being saved:</h2>
+
+      <ul>
+        <% bow_trajectory.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :bow_stroke_type, style: "display: block" %>
+    <%= form.text_field :bow_stroke_type %>
+  </div>
+
+  <div>
+    <%= form.label :friction_trajectory, style: "display: block" %>
+    <%= form.text_field :friction_trajectory %>
+  </div>
+
+  <div>
+    <%= form.label :empty_trajectory, style: "display: block" %>
+    <%= form.text_field :empty_trajectory %>
+  </div>
+
+  <div>
+    <%= form.label :air_time_percentage, style: "display: block" %>
+    <%= form.number_field :air_time_percentage %>
+  </div>
+
+  <div>
+    <%= form.label :resonance_quality, style: "display: block" %>
+    <%= form.number_field :resonance_quality %>
+  </div>
+
+  <div>
+    <%= form.label :tension_buildup, style: "display: block" %>
+    <%= form.textarea :tension_buildup %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

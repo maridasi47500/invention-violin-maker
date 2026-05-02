@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @elbow_breathing %>
+
+<div>
+  <%= link_to "Edit this elbow breathing", edit_elbow_breathing_path(@elbow_breathing) %> |
+  <%= link_to "Back to elbow breathings", elbow_breathings_path %>
+
+  <%= button_to "Destroy this elbow breathing", @elbow_breathing, method: :delete %>
+</div>

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bow_stroke_type: MyString
+  friction_trajectory: MyString
+  empty_trajectory: MyString
+  air_time_percentage: 1
+  resonance_quality: 1
+  tension_buildup: MyText
+
+two:
+  bow_stroke_type: MyString
+  friction_trajectory: MyString
+  empty_trajectory: MyString
+  air_time_percentage: 1
+  resonance_quality: 1
+  tension_buildup: MyText

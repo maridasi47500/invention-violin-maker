@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Bow trajectories" %>
+
+<h1>Bow trajectories</h1>
+
+<div id="bow_trajectories">
+  <% @bow_trajectories.each do |bow_trajectory| %>
+    <%= render bow_trajectory %>
+    <p>
+      <%= link_to "Show this bow trajectory", bow_trajectory %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New bow trajectory", new_bow_trajectory_path %>

@@ -1,0 +1,77 @@
+<%= form_with(model: body_mechanic) do |form| %>
+  <% if body_mechanic.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(body_mechanic.errors.count, "error") %> prohibited this body_mechanic from being saved:</h2>
+
+      <ul>
+        <% body_mechanic.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :elbow_angle_degrees, style: "display: block" %>
+    <%= form.number_field :elbow_angle_degrees %>
+  </div>
+
+  <div>
+    <%= form.label :elbow_state, style: "display: block" %>
+    <%= form.text_field :elbow_state %>
+  </div>
+
+  <div>
+    <%= form.label :wrist_angle_state, style: "display: block" %>
+    <%= form.text_field :wrist_angle_state %>
+  </div>
+
+  <div>
+    <%= form.label :wrist_extension_degrees, style: "display: block" %>
+    <%= form.number_field :wrist_extension_degrees %>
+  </div>
+
+  <div>
+    <%= form.label :index_phalange_state, style: "display: block" %>
+    <%= form.text_field :index_phalange_state %>
+  </div>
+
+  <div>
+    <%= form.label :thumb_position, style: "display: block" %>
+    <%= form.text_field :thumb_position %>
+  </div>
+
+  <div>
+    <%= form.label :shoulder_position, style: "display: block" %>
+    <%= form.text_field :shoulder_position %>
+  </div>
+
+  <div>
+    <%= form.label :violin_angle_degrees, style: "display: block" %>
+    <%= form.number_field :violin_angle_degrees %>
+  </div>
+
+  <div>
+    <%= form.label :back_posture, style: "display: block" %>
+    <%= form.text_field :back_posture %>
+  </div>
+
+  <div>
+    <%= form.label :chin_pressure, style: "display: block" %>
+    <%= form.text_field :chin_pressure %>
+  </div>
+
+  <div>
+    <%= form.label :bow_parallelism_check, style: "display: block" %>
+    <%= form.checkbox :bow_parallelism_check %>
+  </div>
+
+  <div>
+    <%= form.label :bow_deviation_notes, style: "display: block" %>
+    <%= form.text_field :bow_deviation_notes %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

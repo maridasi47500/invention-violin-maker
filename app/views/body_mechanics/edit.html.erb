@@ -1,0 +1,12 @@
+<% content_for :title, "Editing body mechanic" %>
+
+<h1>Editing body mechanic</h1>
+
+<%= render "form", body_mechanic: @body_mechanic %>
+
+<br>
+
+<div>
+  <%= link_to "Show this body mechanic", @body_mechanic %> |
+  <%= link_to "Back to body mechanics", body_mechanics_path %>
+</div>

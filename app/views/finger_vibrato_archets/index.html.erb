@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Finger vibrato archets" %>
+
+<h1>Finger vibrato archets</h1>
+
+<div id="finger_vibrato_archets">
+  <% @finger_vibrato_archets.each do |finger_vibrato_archet| %>
+    <%= render finger_vibrato_archet %>
+    <p>
+      <%= link_to "Show this finger vibrato archet", finger_vibrato_archet %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New finger vibrato archet", new_finger_vibrato_archet_path %>
