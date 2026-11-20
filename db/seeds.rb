@@ -10,49 +10,49 @@
 # db/seeds.rb
 # Nettoie avant de seed
 puts "Cleaning database..."
-CoupArchet.destroy_all
-Epoque.destroy_all
-PuceCategory.destroy_all
-StyleMusical.destroy_all
-Caractere.destroy_all
+#CoupArchet.destroy_all
+#Epoque.destroy_all
+#PuceCategory.destroy_all
+#StyleMusical.destroy_all
+#Caractere.destroy_all
 
 puts "Seeding reference tables..."
 
 # Epoques
-baroque = Epoque.create!(nom: "Baroque")
-classique = Epoque.create!(nom: "Classique") 
-romantique = Epoque.create!(nom: "Romantique")
-moderne = Epoque.create!(nom: "Moderne")
-universel = Epoque.create!(nom: "Baroque → Moderne")
+baroque = Epoque.find_or_create_by(nom: "Baroque")
+classique = Epoque.find_or_create_by(nom: "Classique") 
+romantique = Epoque.find_or_create_by(nom: "Romantique")
+moderne = Epoque.find_or_create_by(nom: "Moderne")
+universel = Epoque.find_or_create_by(nom: "Baroque → Moderne")
 
 # Puce / Catégories
-continu = PuceCategory.create!(nom: "Continu", description: "Archet ne quitte pas la corde")
-articule = PuceCategory.create!(nom: "Articulé", description: "Notes séparées avec attaque")
-sautille = PuceCategory.create!(nom: "Sautillé", description: "Archet rebondit sur la corde")
-continu_articule = PuceCategory.create!(nom: "Continu articulé", description: "Legato avec pulsations")
-special = PuceCategory.create!(nom: "Spécial", description: "Effets et techniques étendues")
+continu = PuceCategory.find_or_create_by(nom: "Continu", description: "Archet ne quitte pas la corde")
+articule = PuceCategory.find_or_create_by(nom: "Articulé", description: "Notes séparées avec attaque")
+sautille = PuceCategory.find_or_create_by(nom: "Sautillé", description: "Archet rebondit sur la corde")
+continu_articule = PuceCategory.find_or_create_by(nom: "Continu articulé", description: "Legato avec pulsations")
+special = PuceCategory.find_or_create_by(nom: "Spécial", description: "Effets et techniques étendues")
 
 # Styles
-universel_style = StyleMusical.create!(nom: "Universel")
-lyrique = StyleMusical.create!(nom: "Lyrique")
-virtuosite = StyleMusical.create!(nom: "Virtuosité")
-orchestral = StyleMusical.create!(nom: "Orchestral")
-danse = StyleMusical.create!(nom: "Danse")
-accentue = StyleMusical.create!(nom: "Accentué")
-chante = StyleMusical.create!(nom: "Chanté")
-effets = StyleMusical.create!(nom: "Effets")
-symphonique = StyleMusical.create!(nom: "Symphonique")
+universel_style = StyleMusical.find_or_create_by(nom: "Universel")
+lyrique = StyleMusical.find_or_create_by(nom: "Lyrique")
+virtuosite = StyleMusical.find_or_create_by(nom: "Virtuosité")
+orchestral = StyleMusical.find_or_create_by(nom: "Orchestral")
+danse = StyleMusical.find_or_create_by(nom: "Danse")
+accentue = StyleMusical.find_or_create_by(nom: "Accentué")
+chante = StyleMusical.find_or_create_by(nom: "Chanté")
+effets = StyleMusical.find_or_create_by(nom: "Effets")
+symphonique = StyleMusical.find_or_create_by(nom: "Symphonique")
 
 # Caractères
-neutre = Caractere.create!(nom: "Neutre")
-cantabile = Caractere.create!(nom: "Cantabile")
-energico = Caractere.create!(nom: "Energico")
-vivace = Caractere.create!(nom: "Vivace")
-brillante = Caractere.create!(nom: "Brillante")
-deciso = Caractere.create!(nom: "Deciso")
-dolce = Caractere.create!(nom: "Dolce")
-secco = Caractere.create!(nom: "Secco")
-danse_car = Caractere.create!(nom: "Danse")
+neutre = Caractere.find_or_create_by(nom: "Neutre")
+cantabile = Caractere.find_or_create_by(nom: "Cantabile")
+energico = Caractere.find_or_create_by(nom: "Energico")
+vivace = Caractere.find_or_create_by(nom: "Vivace")
+brillante = Caractere.find_or_create_by(nom: "Brillante")
+deciso = Caractere.find_or_create_by(nom: "Deciso")
+dolce = Caractere.find_or_create_by(nom: "Dolce")
+secco = Caractere.find_or_create_by(nom: "Secco")
+danse_car = Caractere.find_or_create_by(nom: "Danse")
 
 puts "Seeding coups d'archet..."
 
@@ -108,32 +108,32 @@ coups = [
   }
 ]
 
-CoupArchet.create!(coups)
+CoupArchet.create(coups)
 puts "Done! #{CoupArchet.count} coups d'archet créés."
 # Epoques supplémentaires
-classique_romantique = Epoque.create!(nom: "Classique → Romantique")
-baroque_classique = Epoque.create!(nom: "Baroque → Classique")
-classique_moderne = Epoque.create!(nom: "Classique → Moderne")
-romantique_moderne = Epoque.create!(nom: "Romantique → Moderne")
+classique_romantique = Epoque.find_or_create_by(nom: "Classique → Romantique")
+baroque_classique = Epoque.find_or_create_by(nom: "Baroque → Classique")
+classique_moderne = Epoque.find_or_create_by(nom: "Classique → Moderne")
+romantique_moderne = Epoque.find_or_create_by(nom: "Romantique → Moderne")
 
 # Styles supplémentaires
-noble = StyleMusical.create!(nom: "Danse noble")
-dramatique = StyleMusical.create!(nom: "Dramatique")
-pedagogique = StyleMusical.create!(nom: "Pédagogique")
-folk = StyleMusical.create!(nom: "Folk")
-vivaldi_bach = StyleMusical.create!(nom: "Vivaldi/Bach")
+noble = StyleMusical.find_or_create_by(nom: "Danse noble")
+dramatique = StyleMusical.find_or_create_by(nom: "Dramatique")
+pedagogique = StyleMusical.find_or_create_by(nom: "Pédagogique")
+folk = StyleMusical.find_or_create_by(nom: "Folk")
+vivaldi_bach = StyleMusical.find_or_create_by(nom: "Vivaldi/Bach")
 
 # Caractères supplémentaires
-maestoso = Caractere.create!(nom: "Maestoso")
-brillant = Caractere.create!(nom: "Brillant")
-leger = Caractere.create!(nom: "Léger")
-ondulant = Caractere.create!(nom: "Ondulant")
-metallique = Caractere.create!(nom: "Métallique")
-flute = Caractere.create!(nom: "Flûté")
-percussif = Caractere.create!(nom: "Percussif")
-soutenu = Caractere.create!(nom: "Soutenu")
-agitato = Caractere.create!(nom: "Agitato")
-marcato = Caractere.create!(nom: "Marcato")
+maestoso = Caractere.find_or_create_by(nom: "Maestoso")
+brillant = Caractere.find_or_create_by(nom: "Brillant")
+leger = Caractere.find_or_create_by(nom: "Léger")
+ondulant = Caractere.find_or_create_by(nom: "Ondulant")
+metallique = Caractere.find_or_create_by(nom: "Métallique")
+flute = Caractere.find_or_create_by(nom: "Flûté")
+percussif = Caractere.find_or_create_by(nom: "Percussif")
+soutenu = Caractere.find_or_create_by(nom: "Soutenu")
+agitato = Caractere.find_or_create_by(nom: "Agitato")
+marcato = Caractere.find_or_create_by(nom: "Marcato")
 coups=[{
   nom: "Sautillé", technique: "Sautillé naturel", rythme_exact: "Doubles rapides",
   vitesse_musicale: "Presto", longueur_archet: "¼", pression: "Légère",
@@ -506,55 +506,56 @@ coups=[{
   type_attaque: "Depuis la corde", dynamique_typique: "mp", description: "Notes inégales, Lully/Couperin",
   epoque: baroque, puce_category: articule, style_musical: danse, caractere: danse_car
 }]
-CoupArchet.create!(coups)
+mi = Corde.find_or_create_by(nom: "mi")
+CoupArchet.create(coups)
 # db/seeds.rb - Ajouts pour navigation
 puts "Seeding compositeurs et oeuvres..."
 
-bach = Compositeur.create!(nom: "J.S. Bach", epoque: baroque, nationalite: "Allemand")
-mozart = Compositeur.create!(nom: "W.A. Mozart", epoque: classique, nationalite: "Autrichien")
-paganini = Compositeur.create!(nom: "N. Paganini", epoque: romantique, nationalite: "Italien")
+bach = Compositeur.find_or_create_by(nom: "J.S. Bach", epoque: baroque, nationalite: "Allemand")
+mozart = Compositeur.find_or_create_by(nom: "W.A. Mozart", epoque: classique, nationalite: "Autrichien")
+paganini = Compositeur.find_or_create_by(nom: "N. Paganini", epoque: romantique, nationalite: "Italien")
 
-partita3 = Oeuvre.create!(titre: "Partita n°3 BWV 1006, Preludio", compositeur: bach, annee: 1720, style_musical: vivaldi_bach)
-symphonie40 = Oeuvre.create!(titre: "Symphonie n°40 K.550", compositeur: mozart, annee: 1788, style_musical: symphonique)
-caprice24 = Oeuvre.create!(titre: "Caprice n°24", compositeur: paganini, annee: 1817, style_musical: virtuosite)
+partita3 = Oeuvre.find_or_create_by(titre: "Partita n°3 BWV 1006, Preludio", compositeur: bach, annee: 1720, style_musical: vivaldi_bach)
+symphonie40 = Oeuvre.find_or_create_by(titre: "Symphonie n°40 K.550", compositeur: mozart, annee: 1788, style_musical: symphonique)
+caprice24 = Oeuvre.find_or_create_by(titre: "Caprice n°24", compositeur: paganini, annee: 1817, style_musical: virtuosite)
 
 # Lier coups d'archet à des exemples concrets
-spiccato = CoupArchet.find_by(nom: "Spiccato")
-ex1 = ExempleMusical.create!(
+spiccato = CoupArchet.find_or_create_by(nom: "Spiccato")
+ex1 = ExempleMusical.find_or_create_by(
   oeuvre: partita3, 
   coup_archet: spiccato, 
   mesure: "mes. 1-8", 
   description: "Doubles croches spiccato au milieu, tempo Allegro"
 )
-Media.create!(exemple_musical: ex1, type_media: :video, url: "https://youtube.com/watch?v=xyz")
-Media.create!(exemple_musical: ex1, type_media: :partition, url: "https://imslp.org/wiki/...")
+Media.find_or_create_by(exemple_musical: ex1, type_media: :video, url: "https://youtube.com/watch?v=xyz")
+Media.find_or_create_by(exemple_musical: ex1, type_media: :partition, url: "https://imslp.org/wiki/...")
 
 # Tags pour recherche facettes
-Tag.create!(nom: "Débutant")
-Tag.create!(nom: "Orchestre")
-Tag.create!(nom: "Solo")
-Tag.create!(nom: "Examen DEM")
+Tag.find_or_create_by(nom: "Débutant")
+Tag.find_or_create_by(nom: "Orchestre")
+Tag.find_or_create_by(nom: "Solo")
+Tag.find_or_create_by(nom: "Examen DEM")
 
-spiccato.tags << Tag.find_by(nom: "Orchestre")
-spiccato.tags << Tag.find_by(nom: "Examen DEM")
-sol = Corde.find_by(nom: "Sol")
-romantique = Epoque.find_by(nom: "Romantique")
-brahms = Compositeur.create!(nom: "Brahms", epoque: romantique)
-detache_lourd = CoupArchet.find_by(nom: "Détaché lourd")
-symph4 = Oeuvre.create!(titre: "Symphonie 4, 2e mvt", compositeur: brahms)
+spiccato.tags << Tag.find_or_create_by(nom: "Orchestre")
+spiccato.tags << Tag.find_or_create_by(nom: "Examen DEM")
+sol = Corde.find_or_create_by(nom: "Sol")
+romantique = Epoque.find_or_create_by(nom: "Romantique")
+brahms = Compositeur.find_or_create_by(nom: "Brahms", epoque: romantique)
+detache_lourd = CoupArchet.find_or_create_by(nom: "Détaché lourd")
+symph4 = Oeuvre.find_or_create_by(style_musical: lyrique, titre: "Symphonie 4, 2e mvt", compositeur: brahms)
 
-spirit = StringSpirit.create!(corde: sol, epoque: romantique, compositeur: brahms)
-fp = FirePoint.create!(string_spirit: spirit, coup_archet: detache_lourd, oeuvre: symph4)
+spirit = StringSpirit.find_or_create_by(corde: sol, epoque: romantique, compositeur: brahms)
+fp = FirePoint.find_or_create_by(string_spirit: spirit, coup_archet: detache_lourd, oeuvre: symph4)
 
-Question.create!(fire_point: fp, texte: "Le feu de Brahms est-il dans le poids ou dans la lenteur de l’archet ?")
-Question.create!(fire_point: fp, texte: "Joue-le sul tasto. Le feu s’éteint-il ou change-t-il de couleur ?")
-labo = JournalLabo.create!(date: Date.today, oeuvre: partita3, mesure: "m.1-2")
+Question.find_or_create_by(fire_point: fp, texte: "Le feu de Brahms est-il dans le poids ou dans la lenteur de l’archet ?")
+Question.find_or_create_by(fire_point: fp, texte: "Joue-le sul tasto. Le feu s’éteint-il ou change-t-il de couleur ?")
+labo = JournalLabo.find_or_create_by(date: Date.today, oeuvre: partita3, mesure: "m.1-2")
 
-Experience.create!(journal_labo: labo, corde: mi, point_archet: "Milieu", 
+Experience.find_or_create_by(journal_labo: labo, corde: mi, point_archet: "Milieu", 
   longueur: "1/4", pression: "Légère", ressenti: 9, 
   note: "Résonance Mi à vide + rebond naturel = frissons. Sur La ça meurt.")
 
-Experience.create!(journal_labo: labo, corde: mi, point_archet: "Talon", 
+Experience.find_or_create_by(journal_labo: labo, corde: mi, point_archet: "Talon", 
   longueur: "1/2", pression: "Forte", ressenti: 2, 
   note: "Écrasé, baroque mort. Anti-feu.")
 

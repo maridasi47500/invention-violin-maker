@@ -1,6 +1,6 @@
 class CreateExempleMusicals < ActiveRecord::Migration[8.0]
   def change
-    create_table :exemple_musicals do |t|
+    create_table :exemple_musicaux do |t|
       t.references :oeuvre, null: false, foreign_key: true
       t.references :coup_archet, null: false, foreign_key: true
       t.string :mesure

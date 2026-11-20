@@ -12,7 +12,7 @@ class FirePointsController < ApplicationController
 
   # GET /fire_points/new
   def new
-    @fire_point = FirePoint.new
+    @fire_point = FirePoint.new(string_spirit: StringSpirit.new, coup_archet: CoupArchet.new, oeuvre: Oeuvre.new)
   end
 
   # GET /fire_points/1/edit
@@ -65,6 +65,6 @@ class FirePointsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fire_point_params
-      params.expect(fire_point: [ :string_spirit_id, :coup_archet_id, :oeuvre_id,:valid_epochs, :invalid_epochs, :cross_piece_validation, :was_false_positive, :false_positive_reason ])
+      params.expect(fire_point: [ :string_spirit_id, :coup_archet_id, :oeuvre_id,:valid_epochs, :invalid_epochs, :cross_piece_validation, :was_false_positive, :false_positive_reason, :oeuvre_attributes=>{}, :coup_archet_attributes=>{},:string_spirit_attributes=>{}])
     end
 end

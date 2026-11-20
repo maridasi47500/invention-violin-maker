@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :enregistrement_musicaux
   resources :souvenirs
   resources :session_jeux
-  resources :enregistrement_musicals
+  resources :enregistrement_musicaux
   resources :lutheries
   resources :coup_archet_epoques
   resources :tradition_deviations
@@ -35,11 +35,11 @@ end
 end
   resources :fire_points
   resources :string_spirits
-  resources :exemple_musicals
+  resources :exemple_musicaux
   resources :coup_archet_tags
   resources :puce_categories
   resources :caracteres
-  resources :style_musicals
+  resources :style_musicaux
   resources :media
   resources :coup_archets do
     resources :exemple_musicals do

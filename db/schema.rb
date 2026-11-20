@@ -209,15 +209,15 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_02_022519) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "exemple_musicals", force: :cascade do |t|
+  create_table "exemple_musicaux", force: :cascade do |t|
     t.integer "oeuvre_id", null: false
     t.integer "coup_archet_id", null: false
     t.string "mesure"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["coup_archet_id"], name: "index_exemple_musicals_on_coup_archet_id"
-    t.index ["oeuvre_id"], name: "index_exemple_musicals_on_oeuvre_id"
+    t.index ["coup_archet_id"], name: "index_exemple_musicaux_on_coup_archet_id"
+    t.index ["oeuvre_id"], name: "index_exemple_musicaux_on_oeuvre_id"
   end
 
   create_table "experiences", force: :cascade do |t|
@@ -431,7 +431,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_02_022519) do
     t.index ["epoque_id"], name: "index_string_spirits_on_epoque_id"
   end
 
-  create_table "style_musicals", force: :cascade do |t|
+  create_table "style_musicaux", force: :cascade do |t|
     t.string "nom"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -470,7 +470,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_02_022519) do
   add_foreign_key "coup_archets", "caracteres"
   add_foreign_key "coup_archets", "epoques"
   add_foreign_key "coup_archets", "puce_categories"
-  add_foreign_key "coup_archets", "style_musicals"
+  add_foreign_key "coup_archets", "style_musicaux"
   add_foreign_key "coup_archets_tags", "coup_archets"
   add_foreign_key "coup_archets_tags", "tags"
   add_foreign_key "discovered_misreadings", "epoch_hypotheses"
@@ -481,8 +481,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_02_022519) do
   add_foreign_key "epoch_clues", "fire_points"
   add_foreign_key "epoch_hypotheses", "experiences"
   add_foreign_key "epoch_validations", "epoch_hypotheses"
-  add_foreign_key "exemple_musicals", "coup_archets"
-  add_foreign_key "exemple_musicals", "oeuvres"
+  add_foreign_key "exemple_musicaux", "coup_archets"
+  add_foreign_key "exemple_musicaux", "oeuvres"
   add_foreign_key "experiences", "cordes"
   add_foreign_key "experiences", "journal_labos"
   add_foreign_key "explorations", "fire_points"
@@ -494,9 +494,9 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_02_022519) do
   add_foreign_key "fire_soul_narratives", "fire_points"
   add_foreign_key "journal_labos", "oeuvres"
   add_foreign_key "lutheries", "epoques"
-  add_foreign_key "media", "exemple_musicals"
+  add_foreign_key "media", "exemple_musicaux"
   add_foreign_key "oeuvres", "compositeurs"
-  add_foreign_key "oeuvres", "style_musicals"
+  add_foreign_key "oeuvres", "style_musicaux"
   add_foreign_key "questions", "fire_points"
   add_foreign_key "restorations", "instruments"
   add_foreign_key "session_jeux", "epoques"

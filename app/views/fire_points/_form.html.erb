@@ -11,32 +11,144 @@
     </div>
   <% end %>
 
+  <p>esprit de la corde</p>
+  <%=form.fields_for :string_spirit do |f|%>
+
   <div>
-    <%= form.label :string_spirit_id, style: "display: block" %>
-    <%= form.collection_select :string_spirit_id, StringSpirit.all, :id, :myname %>
+    <%= f.label :corde_id, style: "display: block" %>
+    <%= f.select :corde_id, Corde.all.collect { |p| [ p.nom, p.id ] }, { include_blank: true } %>
   </div>
 
   <div>
-    <%= form.label :coup_archet_id, style: "display: block" %>
-    <%= form.collection_select :coup_archet_id, CoupArchet.all, :id, :nom %>
+    <%= f.label :epoque_id, style: "display: block" %>
+    <%= f.select :epoque_id, Epoque.all.collect { |p| [ p.nom, p.id ] }, { include_blank: true } %>
   </div>
 
   <div>
-    <%= form.label :oeuvre_id, style: "display: block" %>
-    <%= form.collection_select :oeuvre_id, Oeuvre.all, :id, :titre %>
+    <%= f.label :compositeur_id, style: "display: block" %>
+    <%= f.select :compositeur_id, Compositeur.all.collect { |p| [ p.nom, p.id ] }, { include_blank: true } %>
   </div>
+  <%end%>
+  <p>coup d'archet</p>
+  <%=form.fields_for :coup_archet do |f|%>
+  <div>
+    <%= f.label :nom, style: "display: block" %>
+    <%= f.text_field :nom %>
+  </div>
+
+  <div>
+    <%= f.label :technique, style: "display: block" %>
+    <%= f.text_field :technique %>
+  </div>
+
+  <div>
+    <%= f.label :rythme_exact, style: "display: block" %>
+    <%= f.text_field :rythme_exact %>
+  </div>
+
+  <div>
+    <%= f.label :vitesse_musicale, style: "display: block" %>
+    <%= f.text_field :vitesse_musicale %>
+  </div>
+
+  <div>
+    <%= f.label :longueur_archet, style: "display: block" %>
+    <%= f.text_field :longueur_archet %>
+  </div>
+
+  <div>
+    <%= f.label :pression, style: "display: block" %>
+    <%= f.text_field :pression %>
+  </div>
+
+  <div>
+    <%= f.label :vitesse_archet, style: "display: block" %>
+    <%= f.text_field :vitesse_archet %>
+  </div>
+
+  <div>
+    <%= f.label :point_contact, style: "display: block" %>
+    <%= f.text_field :point_contact %>
+  </div>
+
+  <div>
+    <%= f.label :angle_archet, style: "display: block" %>
+    <%= f.text_field :angle_archet %>
+  </div>
+
+  <div>
+    <%= f.label :type_attaque, style: "display: block" %>
+    <%= f.text_field :type_attaque %>
+  </div>
+
+  <div>
+    <%= f.label :dynamique_typique, style: "display: block" %>
+    <%= f.text_field :dynamique_typique %>
+  </div>
+
+  <div>
+    <%= f.label :description, style: "display: block" %>
+    <%= f.textarea :description %>
+  </div>
+
+  <div>
+    <%= f.label :epoque_id, style: "display: block" %>
+    <%= f.select :epoque_id, Epoque.all.collect { |p| [ p.nom, p.id ] }, { include_blank: true } %>
+  </div>
+
+  <div>
+    <%= f.label :puce_category_id, style: "display: block" %>
+    <%= f.select :puce_category_id, PuceCategory.all.collect { |p| [ p.nom, p.id ] }, { include_blank: true } %>
+  </div>
+
+  <div>
+    <%= f.label :style_musical_id, style: "display: block" %>
+    <%= f.select :style_musical_id, StyleMusical.all.collect { |p| [ p.nom, p.id ] }, { include_blank: true } %>
+  </div>
+
+  <div>
+    <%= f.label :caractere_id, style: "display: block" %>
+    <%= f.text_field :caractere_id %>
+    <%= f.select :caractere_id, Caractere.all.collect { |p| [ p.nom, p.id ] }, { include_blank: true } %>
+  </div>
+
+
+  <%end%>
+
+  <p>oeuvre</p>
+  <%=form.fields_for :oeuvre do |f|%>
+    <div>
+    <%= f.label :titre, style: "display: block" %>
+    <%= f.text_field :titre %>
+  </div>
+
+  <div>
+    <%= f.label :annee, style: "display: block" %>
+    <%= f.text_field :annee %>
+  </div>
+
+  <div>
+    <%= f.label :compositeur_id, style: "display: block" %>
+    <%= f.select :compositeur_id,Compositeur.all.collect { |p| [ p.nom, p.id ] }, { include_blank: true } %>
+  </div>
+
+  <div>
+    <%= f.label :style_musical_id, style: "display: block" %>
+    <%= f.select :style_musical_id,StyleMusical.all.collect { |p| [ p.nom, p.id ] }, { include_blank: true } %>
+  </div>
+
+  <%end%>
   <div>
     <%= form.label :valid_epochs, style: "display: block" %>
-    <%= form.collection_select :valid_epochs, Epoque.all, :id, :nom, multiple: true %>
+    <%= form.collection_checkboxes :valid_epochs, Epoque.all, :id, :nom, multiple: true %>
   </div>
   <div>
     <%= form.label :invalid_epochs, style: "display: block" %>
-    <%= form.collection_select :invalid_epochs, Epoque.all, :id, :nom, multiple: true %>
+    <%= form.collection_checkboxes :invalid_epochs, Epoque.all, :id, :nom, multiple: true %>
   </div>
-  <div>
-    <%= form.label :cross_piece_validation, style: "display: block" %>
-    <%= form.collection_select :cross_piece_validation, Oeuvre.all, :id, :titre,multiple: true %>
-  </div>
+  <p>cross piece validation</p>
+  <%=form.textarea :cross_piece_validation%>
+
   <div>
     <%= form.label :was_false_positive, style: "display: block" %>
     <%= form.check_box :was_false_positive %>
