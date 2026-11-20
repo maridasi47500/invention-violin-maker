@@ -5,8 +5,6 @@ class FirePoint < ApplicationRecord
   belongs_to :oeuvre
   has_many :questions
   has_many :explorations
-  belongs_to :cross_piece_validation, class_name: "Oeuvre"
-  accepts_nested_attributes_for :cross_piece_validation, allow_destroy: true
   accepts_nested_attributes_for :string_spirit, allow_destroy: true
   accepts_nested_attributes_for :coup_archet, allow_destroy: true
   accepts_nested_attributes_for :oeuvre, allow_destroy: true

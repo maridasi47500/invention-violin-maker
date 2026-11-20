@@ -5,7 +5,7 @@ class FirePoint < ApplicationRecord
   belongs_to :oeuvre
   has_many :questions
   has_many :explorations
-  belongs_to :cross_piece_validation, class_name: "Oeuvre"
+  #belongs_to :cross_piece_validation, class_name: "Oeuvre"
   accepts_nested_attributes_for :cross_piece_validation, allow_destroy: true
   accepts_nested_attributes_for :string_spirit, allow_destroy: true
   accepts_nested_attributes_for :coup_archet, allow_destroy: true
@@ -24,10 +24,10 @@ before_validation do
     self.coup_archet=x
   end
 
-  x=Oeuvre.find_or_initialize_by(title: cross_piece_validation.title, compositeur_id: cross_piece_validation.compositeur_id) 
-  if x.id.to_i > 0
-    self.cross_piece_validation=x
-  end
+  #x=Oeuvre.find_or_initialize_by(title: cross_piece_validation.title, compositeur_id: cross_piece_validation.compositeur_id) 
+  #if x.id.to_i > 0
+  #  self.cross_piece_validation=x
+  #end
   x=StringSpirit.find_or_initialize_by(string_spirit.as_h)
   if x.id.to_i > 0
     self.string_spirit=x
